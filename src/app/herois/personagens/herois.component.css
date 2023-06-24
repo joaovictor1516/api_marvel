@@ -1,0 +1,17 @@
+main{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 1000px;
+}
+
+div{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    border: 2px solid #414141;
+    word-wrap: break-word;
+    padding: 5px;
+}
