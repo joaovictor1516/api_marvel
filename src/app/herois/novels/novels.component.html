@@ -1,7 +1,9 @@
-<div class="conteiner">
+<main>
     <div *ngFor="let revistinhas of novels">
-        <img src="{{ revistinhas.thumbnail.path}}/landscape_small.jpg" alt="novels">
-        
-        <h3>{{ revistinhas.name }}</h3>
+        <img src="{{ revistinhas.thumbnail.path}}/landscape_small.jpg" alt="novels" (mouseenter)="mostraDetalhes(revistinhas)" (mouseleave)="escondeDetalhes()">
+        <div *ngIf="revistinhas.detalhes" class="detalhes">
+            <h3>{{ revistinhas.title }}</h3>
+            <h6>{{ revistinhas.characters.items }}</h6>
+        </div>
     </div>
-</div>
+</main>

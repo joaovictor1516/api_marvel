@@ -25,4 +25,13 @@ export class NovelsComponent implements OnInit{
 
   }
 
+  mostraDetalhes(novel: any){
+    novel.detalhes = true;
+  }
+
+  escondeDetalhes(){
+    this.novels.forEach((novel) => {
+      novel.detalhes = false;
+    })
+  }
 }
