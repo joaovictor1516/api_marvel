@@ -27,7 +27,6 @@ export class SeriesComponent implements OnInit{
   mostraDetalhes(series: any){
     series.detalhes = true;
     this.seriesHerois.forEach((element: any) => {
-      console.log(element);
       if(element.comics.items.length >= 1){
         element.quadrinho = true;
       } else{
