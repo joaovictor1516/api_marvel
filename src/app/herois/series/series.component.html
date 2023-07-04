@@ -1,1 +1,5 @@
-<p>series works!</p>
+<main>
+    <div *ngFor="let series of seriesHerois">
+        <img src="{{ series.thumbnail.path }}/landscape_small.jpg" alt="{{ series.name }}" >
+    </div>
+</main>
