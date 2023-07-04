@@ -16,10 +16,24 @@ export class HeroisComponent implements OnInit{
     this.marvelService.getCharacters().pipe(take(1)).subscribe({
       next: (response: any) => {
         this.heros = response.data.results;
+        console.log(this.heros);
       },
       error: (error: any) => {
         console.error(error);
       }
+    })
+  }
+
+  mostraDetalhes(personagem: any){
+    personagem.detalhes = true;
+    if(personagem.description === ""){
+      personagem.description = "Description is unndefined"
+    }
+  }
+
+  escondeDetalhes(){
+    this.heros.forEach((herois) => {
+      herois.detalhes = false;
     })
   }
 }
