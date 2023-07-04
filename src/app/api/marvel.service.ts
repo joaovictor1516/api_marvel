@@ -31,4 +31,12 @@ export class MarvelService {
 
     return this.http.get(url, { headers });
   }
+
+  getSeries(){
+    const url: string = `${this.baseUrl}/series?ts=${this.timeStemp}&apikey=${this.publicKey}&hash=${this.hash}`;
+
+    const headers = new HttpHeaders().set("Content-Type", "application/json");
+
+    return this.http.get(url,{ headers });
+  }
 }
