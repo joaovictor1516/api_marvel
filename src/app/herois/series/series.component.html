@@ -1,5 +1,10 @@
 <main>
     <div *ngFor="let series of seriesHerois">
-        <img src="{{ series.thumbnail.path }}/landscape_small.jpg" alt="{{ series.name }}" >
+        <img src="{{ series.thumbnail.path }}/landscape_small.jpg" alt="{{ series.name }}" (mouseenter)="mostraDetalhes(series)" (mouseleave)="escondeDetalhes()">
+    
+        <div *ngIf="series.detalhes" class="detalhes">
+            <h3>{{ series.title }}</h3>
+            <p *ngIf="series.quadrinho">Tem quadrinho</p>
+        </div>
     </div>
 </main>
