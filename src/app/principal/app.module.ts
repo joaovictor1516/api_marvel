@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { NavebarComponent } from '../navebar/navebar.component';
 import { HeroisComponent } from '../herois/personagens/herois.component';
 import { NovelsComponent } from '../herois/novels/novels.component';
+import { SeriesComponent } from '../herois/series/series.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavebarComponent,
     HeroisComponent,
-    NovelsComponent
+    NovelsComponent,
+    SeriesComponent
   ],
   imports: [
     BrowserModule,
