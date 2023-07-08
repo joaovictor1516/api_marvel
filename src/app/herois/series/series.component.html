@@ -1,3 +1,7 @@
+<header>
+    <app-navebar/>
+</header>
+
 <main>
     <div *ngFor="let series of seriesHerois">
         <img src="{{ series.thumbnail.path }}/landscape_small.jpg" alt="{{ series.name }}" (mouseenter)="mostraDetalhes(series)" (mouseleave)="escondeDetalhes()">

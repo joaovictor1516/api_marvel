@@ -1,3 +1,7 @@
+<header>
+    <app-navebar/>
+</header>
+
 <main>
     <div *ngFor="let revistinhas of novels">
         <img src="{{ revistinhas.thumbnail.path}}/landscape_small.jpg" alt="novels" (mouseenter)="mostraDetalhes(revistinhas)" (mouseleave)="escondeDetalhes()">
