@@ -1,0 +1,18 @@
+
+ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+ul a{
+    text-decoration: none;
+    color: #424242;
+}
+
+ul a:hover{
+    text-decoration: underline #ff6464;
+}
