@@ -3,12 +3,13 @@
 </header>
 
 <main>
-    <div *ngFor="let herois of heros">
-        <img src="{{ herois.thumbnail.path }}/landscape_small.jpg" alt="{{ herois.nome }}" (mouseenter)="mostraDetalhes(herois)" (mouseleave)="escondeDetalhes()">
+    <div *ngFor="let herois of heros" (mouseenter)="mostraDetalhes(herois)" (mouseleave)="escondeDetalhes()">
+        <img src="{{ herois.thumbnail.path }}/landscape_small.jpg" alt="{{ herois.nome }}">
 
         <div *ngIf="herois.detalhes" class="detalhes">
-            <h1>{{ herois.name }}</h1>
+            <h3>{{ herois.name }}</h3>
             <p>{{ herois.description }}</p>
+            <a href="#">Saber mais</a>
         </div>
     </div>
 </main>
