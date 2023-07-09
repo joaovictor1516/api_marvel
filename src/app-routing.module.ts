@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HeroisComponent } from './app/herois/personagens/herois.component';
+import { HeroisComponent } from './app/herois/herois/herois.component';
 import { NovelsComponent } from './app/herois/novels/novels.component';
 import { SeriesComponent } from './app/herois/series/series.component';
 import { PersonagemComponent } from './app/herois/personagem/personagem.component';
