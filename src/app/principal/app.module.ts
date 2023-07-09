@@ -9,6 +9,7 @@ import { NavebarComponent } from '../navebar/navebar.component';
 import { HeroisComponent } from '../herois/personagens/herois.component';
 import { NovelsComponent } from '../herois/novels/novels.component';
 import { SeriesComponent } from '../herois/series/series.component';
+import { PersonagemComponent } from '../herois/personagem/personagem.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SeriesComponent } from '../herois/series/series.component';
     NavebarComponent,
     HeroisComponent,
     NovelsComponent,
-    SeriesComponent
+    SeriesComponent,
+    PersonagemComponent
   ],
   imports: [
     BrowserModule,
