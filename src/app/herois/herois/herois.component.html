@@ -9,7 +9,7 @@
         <div *ngIf="herois.detalhes" class="detalhes">
             <h3>{{ herois.name }}</h3>
             <p>{{ herois.description }}</p>
-            <a href="#">Saber mais</a>
+            <a (click)="maisDetalhes(herois)">Saber mais</a>
         </div>
     </div>
 </main>
