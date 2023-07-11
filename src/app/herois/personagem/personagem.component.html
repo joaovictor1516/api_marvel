@@ -1,3 +1,11 @@
 <header>
     <app-navebar/>
 </header>
+
+<main>
+    <div *ngFor="let heroi of personagemDados">
+        <img src="{{ heroi.thumbnail.path }}/landscape_small.jpg" alt="">
+
+        <h3> {{ heroi.name }} </h3>
+    </div>
+</main>
