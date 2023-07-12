@@ -29,6 +29,14 @@ img{
     border-radius: 5px;
 }
 
+a{
+    cursor: pointer;
+}
+
+a:hover{
+    text-decoration: underline #ff6464;
+}
+
 .detalhes{
     margin: 5px 0;
     height: 100px;
