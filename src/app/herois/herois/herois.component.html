@@ -4,7 +4,7 @@
 
 <main>
     <div *ngFor="let herois of heros" (mouseenter)="mostraDetalhes(herois)" (mouseleave)="escondeDetalhes()">
-        <img src="{{ herois.thumbnail.path }}/landscape_small.jpg" alt="{{ herois.nome }}">
+        <img src="{{ herois.thumbnail.path }}/landscape_small.{{ herois.thumbnail.extension }}" alt="{{ herois.nome }}">
 
         <div *ngIf="herois.detalhes" class="detalhes">
             <h3>{{ herois.name }}</h3>
