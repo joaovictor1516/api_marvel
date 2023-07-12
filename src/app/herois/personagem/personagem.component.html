@@ -4,8 +4,12 @@
 
 <main>
     <div *ngFor="let heroi of personagemDados">
-        <img src="{{ heroi.thumbnail.path }}/landscape_small.jpg" alt="">
+        <img src="{{ heroi.thumbnail.path }}/landscape_xlarge.jpg" alt="">
 
         <h3> {{ heroi.name }} </h3>
+
+        <div (load)="descricaoHeroi(heroi)">
+            <p>{{heroi.description}}</p>
+        </div>
     </div>
 </main>

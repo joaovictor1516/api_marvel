@@ -18,7 +18,6 @@ export class HeroisComponent implements OnInit{
     this.marvelService.getCharacters().pipe(take(1)).subscribe({
       next: (response: any) => {
         this.heros = response.data.results;
-        console.log(this.heros);
       },
       error: (error: any) => {
         console.error(error);

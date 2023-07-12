@@ -11,6 +11,7 @@ import { MarvelService } from 'src/app/api/marvel.service';
 export class PersonagemComponent implements OnInit{
   personagemDados: any = [];
   personagem: any = [];
+  comics: any = [];
   
   constructor(private marvelService: MarvelService, private http: HttpClient){}
 
@@ -20,7 +21,8 @@ export class PersonagemComponent implements OnInit{
     this.getCharacter().pipe(take(1)).subscribe({
       next: (response: any) => {
         this.personagemDados = response.data.results;
-        console.log(this.personagemDados, this.personagem);
+        console.log(this.personagemDados);
+        console.log(this.personagem);
       },
       error: (error) => {
         console.error(error);
@@ -34,6 +36,12 @@ export class PersonagemComponent implements OnInit{
     const headers = new HttpHeaders().set("Content-Type", "application/json");
 
     return this.http.get(url,{ headers });
+  }
+
+  descricaoHeroi(heroi: any){
+    if(heroi.description === ""){
+      heroi.description = "Description is unndefined"
+    }
   }
 
 }
