@@ -11,5 +11,19 @@
         <div (load)="descricaoHeroi(heroi)">
             <p>{{heroi.description}}</p>
         </div>
+
+        <div>
+            <h4>Comics:</h4>
+            <div *ngFor="let comics of personagemComics">
+                <img src="{{ comics.thumbnail.path }}/landscape_xlarge.{{ comics.thumbnail.extension }}" alt="{{ comics.title }}">
+
+                <h4>{{ comics.title }}</h4>
+
+                <div *ngFor="let comicsDetalhes of personagemComicsDetalhes">
+                    <img src="{{ comicsDetalhes.thumbnail.path }}/landscape_small.{{ comicsDetalhes.thumbnail.extension }}" alt="{{ comicsDetalhes.title }}">
+                </div>
+
+            </div>
+        </div>
     </div>
 </main>

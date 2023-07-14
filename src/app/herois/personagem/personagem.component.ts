@@ -11,7 +11,8 @@ import { MarvelService } from 'src/app/api/marvel.service';
 export class PersonagemComponent implements OnInit{
   personagemDados: any = [];
   personagem: any = [];
-  comics: any = [];
+  personagemComics: any = [];
+  personagemComicsDetalhes: any = [];
   
   constructor(private marvelService: MarvelService, private http: HttpClient){}
 
@@ -22,9 +23,28 @@ export class PersonagemComponent implements OnInit{
       next: (response: any) => {
         this.personagemDados = response.data.results;
         console.log(this.personagemDados);
-        console.log(this.personagem);
       },
-      error: (error) => {
+      error: (error: any) => {
+        console.error(error);
+      }
+    })
+
+    this.getCharacterComics().pipe(take(1)).subscribe({
+      next: (response: any) => {
+        this.personagemComics = response.data.results;
+        console.log(this.personagemComics);
+      },
+      error: (error: any) => {
+        console.error(error);
+      }
+    })
+
+    this.getCharacterComicsDetalhes().pipe(take(1)).subscribe({
+      next: (response: any) => {
+        this.personagemComicsDetalhes = response.data.results;
+        console.log(this.personagemComicsDetalhes);
+      },
+      error: (error: any) => {
         console.error(error);
       }
     })
@@ -42,6 +62,22 @@ export class PersonagemComponent implements OnInit{
     if(heroi.description === ""){
       heroi.description = "Description is unndefined"
     }
+  }
+
+  getCharacterComics(){
+    const url:string = `${this.marvelService.baseUrl}/characters/${this.personagem.id}/comics?ts=${this.marvelService.timeStemp}&apikey=${this.marvelService.publicKey}&hash=${this.marvelService.hash}`;
+
+    const headers = new HttpHeaders().set("Content-Type", "application/json");
+
+    return this.http.get(url,{ headers });
+  }
+
+  getCharacterComicsDetalhes(){
+    const url:string = `${this.marvelService.baseUrl}/comics/${this.personagemComics.id}/images?ts=${this.marvelService.timeStemp}&apikey=${this.marvelService.publicKey}&hash=${this.marvelService.hash}`;
+
+    const headers = new HttpHeaders().set("Content-Type", "application/json");
+
+    return this.http.get(url,{ headers });
   }
 
 }
