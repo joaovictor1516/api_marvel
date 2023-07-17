@@ -25,5 +25,14 @@
 
             </div>
         </div>
+
+        <div>
+            <h4>Variações do {{ heroi.name }}</h4>
+            <div *ngFor="let semelhantes of personagemVariacoes">
+                <img src="{{ semelhantes.thumbnail.path }}/landscape_small.{{ semelhantes.thumbnail.extension }}" alt="{{ semelhantes.name }}">
+
+                <h4>{{ semelhantes.name }}</h4>
+            </div>
+        </div>
     </div>
 </main>

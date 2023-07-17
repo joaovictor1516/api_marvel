@@ -13,6 +13,7 @@ export class PersonagemComponent implements OnInit{
   personagem: any = [];
   personagemComics: any = [];
   personagemComicsDetalhes: any = [];
+  personagemVariacoes: any = [];
   
   constructor(private marvelService: MarvelService, private http: HttpClient){}
 
@@ -22,7 +23,6 @@ export class PersonagemComponent implements OnInit{
     this.getCharacter().pipe(take(1)).subscribe({
       next: (response: any) => {
         this.personagemDados = response.data.results;
-        console.log(this.personagemDados);
       },
       error: (error: any) => {
         console.error(error);
@@ -37,15 +37,25 @@ export class PersonagemComponent implements OnInit{
       error: (error: any) => {
         console.error(error);
       }
-    })
+    });
 
-    this.getCharacterComicsDetalhes().pipe(take(1)).subscribe({
+    // this.getCharacterComicsDetalhes().pipe(take(1)).subscribe({
+    //   next: (response: any) => {
+    //     this.personagemComicsDetalhes = response.data.results;
+    //     console.log(this.personagemComicsDetalhes);
+    //   },
+    //   error: (error: any) => {
+    //     console.error(error);
+    //   }
+    // });
+
+    this.getHeroByName().pipe(take(1)).subscribe({
       next: (response: any) => {
-        this.personagemComicsDetalhes = response.data.results;
-        console.log(this.personagemComicsDetalhes);
+        this.personagemVariacoes = response.data.results;
+        console.log(this.personagemVariacoes);
       },
       error: (error: any) => {
-        console.error(error);
+        console.error(error)
       }
     })
   }
@@ -74,6 +84,21 @@ export class PersonagemComponent implements OnInit{
 
   getCharacterComicsDetalhes(){
     const url:string = `${this.marvelService.baseUrl}/comics/${this.personagemComics.id}/images?ts=${this.marvelService.timeStemp}&apikey=${this.marvelService.publicKey}&hash=${this.marvelService.hash}`;
+
+    const headers = new HttpHeaders().set("Content-Type", "application/json");
+
+    return this.http.get(url,{ headers });
+  }
+//pensar em um nome melhor pra funcao
+  getHeroByName(){
+    const posicao = this.personagem.name.indexOf("(");
+    if(posicao !== -1){
+      this.personagem.name = this.personagem.name.substring(0, posicao);
+      console.log(this.personagem.name);
+    } else{
+      console.log(this.personagem.name);
+    }
+    const url: string = `${this.marvelService.baseUrl}/characters?nameStartsWith=${this.personagem.name}&ts=${this.marvelService.timeStemp}&apikey=${this.marvelService.publicKey}&hash=${this.marvelService.hash}`;
 
     const headers = new HttpHeaders().set("Content-Type", "application/json");
 
