@@ -4,6 +4,7 @@ import { HeroisComponent } from './app/herois/herois/herois.component';
 import { NovelsComponent } from './app/herois/novels/novels.component';
 import { SeriesComponent } from './app/herois/series/series.component';
 import { PersonagemComponent } from './app/herois/personagem/personagem.component';
+import { SerieComponent } from './app/herois/serie/serie.component';
 
 
 const routes: Routes = [
@@ -20,8 +21,12 @@ const routes: Routes = [
     component: SeriesComponent
   },
   {
-    path:'personagem',
+    path: 'personagem',
     component: PersonagemComponent
+  },
+  {
+    path: 'serie',
+    component: SerieComponent
   }
 ];
 
