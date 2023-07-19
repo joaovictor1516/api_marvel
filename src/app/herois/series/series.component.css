@@ -1,0 +1,7 @@
+div:hover:not(.detalhes){
+    justify-content: flex-start;
+}
+.detalhes{
+    position: relative;
+    top: 20px;
+}

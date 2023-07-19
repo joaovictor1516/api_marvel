@@ -3,12 +3,16 @@
 </header>
 
 <main>
-    <div *ngFor="let series of seriesHerois">
-        <img src="{{ series.thumbnail.path }}/landscape_small.jpg" alt="{{ series.name }}" (mouseenter)="mostraDetalhes(series)" (mouseleave)="escondeDetalhes()">
+    <div *ngFor="let series of seriesHerois" (mouseenter)="mostraDetalhes(series)" (mouseleave)="escondeDetalhes()">
+        <img src="{{ series.thumbnail.path }}/landscape_small.jpg" alt="{{ series.name }}" >
     
         <div *ngIf="series.detalhes" class="detalhes">
             <h3>{{ series.title }}</h3>
             <p *ngIf="series.quadrinho">Tem quadrinho</p>
+            <h4>nome das comics que fazer parte da serie: </h4>
+            <div *ngFor="let comics of series.comics.items" class="detalhes">
+                <p>{{ comics.name }}</p>
+            </div>
         </div>
     </div>
 </main>
