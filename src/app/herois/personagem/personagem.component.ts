@@ -9,8 +9,8 @@ import { MarvelService } from 'src/app/api/marvel.service';
   styleUrls: ['./personagem.component.css']
 })
 export class PersonagemComponent implements OnInit{
-  personagemDados: any = [];
   personagem: any = [];
+  personagemDados: any = [];
   personagemComics: any = [];
   personagemComicsDetalhes: any = [];
   personagemVariacoes: any = [];
@@ -38,16 +38,6 @@ export class PersonagemComponent implements OnInit{
         console.error(error);
       }
     });
-
-    // this.getCharacterComicsDetalhes().pipe(take(1)).subscribe({
-    //   next: (response: any) => {
-    //     this.personagemComicsDetalhes = response.data.results;
-    //     console.log(this.personagemComicsDetalhes);
-    //   },
-    //   error: (error: any) => {
-    //     console.error(error);
-    //   }
-    // });
 
     this.getHeroByName().pipe(take(1)).subscribe({
       next: (response: any) => {
@@ -89,7 +79,7 @@ export class PersonagemComponent implements OnInit{
 
     return this.http.get(url,{ headers });
   }
-//pensar em um nome melhor pra funcao
+
   getHeroByName(){
     const posicao = this.personagem.name.indexOf("(");
     if(posicao !== -1){
