@@ -16,6 +16,8 @@ export class MarvelService {
   timeStemp:string = new Date().getTime().toString();
   hash:string = CryptoJS.MD5(this.timeStemp + this.privateKey + this.publicKey).toString();
   personagemSelecionado: any;
+  serieSelecionada: any;
+  comicSelecionada:any;
 
   getCharacters(){
     const url:string = `${this.baseUrl}/characters?ts=${this.timeStemp}&apikey=${this.publicKey}&hash=${this.hash}`;
