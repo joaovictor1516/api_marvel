@@ -10,7 +10,6 @@ import { take } from 'rxjs/operators'
 })
 export class HeroisComponent implements OnInit{
   heros: any[] = [];
-  personagem: any;
 
   constructor(private marvelService: MarvelService, private router: Router){}
 
