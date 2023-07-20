@@ -1,4 +1,4 @@
-import { HttpHeaders,HttpClient } from '@angular/common/http';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs';
 import { MarvelService } from 'src/app/api/marvel.service';
