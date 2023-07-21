@@ -16,7 +16,7 @@ export class SerieComponent implements OnInit {
 
   ngOnInit(): void {
       this.serie = this.marvelService.serieSelecionada;
-      this.getCharacter().pipe(take(1)).subscribe({
+      this.getSerie().pipe(take(1)).subscribe({
         next: (response: any) => {
           this.serieDados = response.data.results;
           console.log(this.serieDados);
@@ -27,7 +27,7 @@ export class SerieComponent implements OnInit {
       });
   }
 
-  getCharacter(){
+  getSerie(){
     const url:string = `${this.marvelService.baseUrl}/series/${this.serie.id}?ts=${this.marvelService.timeStemp}&apikey=${this.marvelService.publicKey}&hash=${this.marvelService.hash}`;
 
     const headers = new HttpHeaders().set("Content-Type", "application/json");
