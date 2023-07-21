@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MarvelService } from 'src/app/api/marvel.service';
 import { take } from 'rxjs/operators'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-novels',
@@ -10,7 +11,7 @@ import { take } from 'rxjs/operators'
 export class NovelsComponent implements OnInit{
   novels:any[] = [];
 
-  constructor(private marvelService: MarvelService){}
+  constructor(private marvelService: MarvelService, private router: Router){}
 
   ngOnInit(){
     this.marvelService.getNovels().pipe(take(1)).subscribe({
@@ -33,5 +34,10 @@ export class NovelsComponent implements OnInit{
     this.novels.forEach((novel) => {
       novel.detalhes = false;
     })
+  }
+
+  maisDetalhes(novel: any){
+    this.marvelService.comicSelecionada = novel;
+    this.router.navigate(['/novel']);
   }
 }
