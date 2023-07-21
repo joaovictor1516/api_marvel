@@ -7,7 +7,7 @@ main{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-around;
 }
 
@@ -38,15 +38,14 @@ a:hover{
 }
 
 .detalhes{
-    margin: 5px 0;
-    height: 100px;
     display:flex;
     flex-direction:column;
     justify-content:center;
+    flex-wrap: wrap;
+    margin: 5px 0;
 }
 
 .detalhes p{
-    margin: 5px 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
