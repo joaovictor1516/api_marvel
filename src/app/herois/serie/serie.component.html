@@ -1,1 +1,14 @@
-<p>serie works!</p>
+<header>
+    <app-navebar/>
+</header>
+
+<main>
+    <div *ngFor="let series of serie">
+      <img src="{{ series.thumbnail.path }}/landscape_xlarge.{{ series.thumbnail.extension }}" alt="{{ series.title }}">
+      <h3>{{ series.title }}</h3>
+      <h4>personagens:</h4>
+      <div *ngFor="let personagem of series.characters.items">
+        <h5>{{ personagem.name }}</h5> 
+      </div>
+    </div>
+  </main>
