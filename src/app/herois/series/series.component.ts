@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { MarvelService } from 'src/app/api/marvel.service';
+import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 
 @Component({
@@ -7,13 +8,14 @@ import { take } from 'rxjs/operators';
   templateUrl: './series.component.html',
   styleUrls: ['./series.component.css']
 })
-export class SeriesComponent implements OnInit{
-  seriesHerois: any[] = [];
 
-  constructor(private MarvelService: MarvelService){}
+export class SeriesComponent implements OnInit{
+  seriesHerois: any = [];
+
+  constructor(private marvelService: MarvelService, private router: Router){}
 
   ngOnInit(): void {
-      this.MarvelService.getSeries().pipe(take(1)).subscribe({
+      this.marvelService.getSeries().pipe(take(1)).subscribe({
         next: (response: any) => {
           this.seriesHerois = response.data.results;
           console.log(this.seriesHerois);
@@ -39,5 +41,10 @@ export class SeriesComponent implements OnInit{
     this.seriesHerois.forEach((element: any) => {
       element.detalhes = false;
     })
+  }
+
+  maisDetalhes(serie: any){
+    this.marvelService.serieSelecionada = serie;
+    this.router.navigate(['/serie']);
   }
 }
