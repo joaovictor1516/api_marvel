@@ -1,7 +1,10 @@
 div:hover:not(.detalhes){
     justify-content: flex-start;
+    max-height: 1000px;
 }
+
 .detalhes{
-    position: relative;
-    top: 20px;
+    height: auto;
+    width: 100px;
+    word-wrap: break-word;
 }
