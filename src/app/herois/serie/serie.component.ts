@@ -10,6 +10,7 @@ import { MarvelService } from 'src/app/api/marvel.service';
 })
 export class SerieComponent implements OnInit {
   serie: any = [];
+  serieDados: any = [];
 
   constructor(private marvelService: MarvelService, private http: HttpClient){}
 
@@ -17,8 +18,8 @@ export class SerieComponent implements OnInit {
       this.serie = this.marvelService.serieSelecionada;
       this.getCharacter().pipe(take(1)).subscribe({
         next: (response: any) => {
-          this.serie = response.data.results;
-          console.log(this.serie);
+          this.serieDados = response.data.results;
+          console.log(this.serieDados);
         },
         error: (error: any) => {
           console.error(error);

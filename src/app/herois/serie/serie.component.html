@@ -3,11 +3,11 @@
 </header>
 
 <main>
-    <div *ngFor="let series of serie">
-      <img src="{{ series.thumbnail.path }}/landscape_xlarge.{{ series.thumbnail.extension }}" alt="{{ series.title }}">
-      <h3>{{ series.title }}</h3>
+    <div *ngFor="let serie of serieDados">
+      <img src="{{ serie.thumbnail.path }}/landscape_xlarge.{{ serie.thumbnail.extension }}" alt="{{ serie.title }}">
+      <h3>{{ serie.title }}</h3>
       <h4>personagens:</h4>
-      <div *ngFor="let personagem of series.characters.items">
+      <div *ngFor="let personagem of serie.characters.items">
         <h5>{{ personagem.name }}</h5> 
       </div>
     </div>
