@@ -23,11 +23,17 @@ export class NovelsComponent implements OnInit{
         console.error(error);
       }
     })
-
   }
 
   mostraDetalhes(novel: any){
     novel.detalhes = true;
+    if(novel.characters.items.length > 0){
+      novel.temPersonagens = true;
+      novel.semPersonagens = false
+    } else{
+      novel.semPersonagens = true;
+      novel.temPersonagens = false;
+    }
   }
 
   escondeDetalhes(){

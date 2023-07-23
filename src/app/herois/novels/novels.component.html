@@ -7,7 +7,19 @@
         <img src="{{ revistinhas.thumbnail.path}}/landscape_small.{{ revistinhas.thumbnail.extension }}" alt="novels">
         <div *ngIf="revistinhas.detalhes" class="detalhes">
             <h3>{{ revistinhas.title }}</h3>
-            <h6>{{ revistinhas.characters.items }}</h6>
+            <h4>Personagens:</h4>
+            <!-- mudar a class depois -->
+            <div *ngFor="let personagem of revistinhas.characters.items" class="detalhes">
+                <div *ngIf="revistinhas.temPersonagens" class="detalhes">
+                <h4>
+                    {{ personagem.name }}
+                </h4>
+                </div>
+            </div>
+            <!-- mudar a class depois -->
+            <div *ngIf="revistinhas.semPersonagens" class="detalhes">
+                <p>Não foram encotrados os personagens desta novel</p>
+            </div>
             <a (click)="maisDetalhes(revistinhas)">Mais detalhes</a>
         </div>
     </div>
