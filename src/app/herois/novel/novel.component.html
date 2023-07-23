@@ -1,1 +1,11 @@
-<p>novel works!</p>
+<header>
+    <app-navebar/>
+</header>
+
+<main>
+    <div *ngFor="let novel of comicDados">
+        <img src="{{ novel.thumbnail.path }}/landscape_xlarge.{{ novel.thumbnail.extension }}" alt="{{ novel.title }}">
+
+        <h3>{{ novel.title }}</h3>
+    </div>
+</main>
