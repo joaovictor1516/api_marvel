@@ -1,5 +1,6 @@
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { MarvelService } from 'src/app/api/marvel.service';
 
@@ -15,7 +16,7 @@ export class PersonagemComponent implements OnInit{
   personagemComicsDetalhes: any = [];
   personagemVariacoes: any = [];
   
-  constructor(private marvelService: MarvelService, private http: HttpClient){}
+  constructor(private marvelService: MarvelService, private http: HttpClient, private router: Router){}
 
   ngOnInit(): void {
     this.personagem = this.marvelService.personagemSelecionado;
@@ -60,20 +61,13 @@ export class PersonagemComponent implements OnInit{
 
   descricaoHeroi(heroi: any){
     if(heroi.description === ""){
-      heroi.description = "Description is unndefined"
+      heroi.description = "Description is unndefined";
     }
+    console.log("Estou funcionando")
   }
 
   getCharacterComics(){
     const url:string = `${this.marvelService.baseUrl}/characters/${this.personagem.id}/comics?ts=${this.marvelService.timeStemp}&apikey=${this.marvelService.publicKey}&hash=${this.marvelService.hash}`;
-
-    const headers = new HttpHeaders().set("Content-Type", "application/json");
-
-    return this.http.get(url,{ headers });
-  }
-
-  getCharacterComicsDetalhes(){
-    const url:string = `${this.marvelService.baseUrl}/comics/${this.personagemComics.id}/images?ts=${this.marvelService.timeStemp}&apikey=${this.marvelService.publicKey}&hash=${this.marvelService.hash}`;
 
     const headers = new HttpHeaders().set("Content-Type", "application/json");
 
@@ -95,4 +89,19 @@ export class PersonagemComponent implements OnInit{
     return this.http.get(url,{ headers });
   }
 
+  mostraDetalhesHeroi(heroi: any){
+    this.marvelService.personagemSelecionado = heroi;
+    this.router.navigate(['/personagem']);
+    console.log(this.marvelService.personagemSelecionado);
+  }
+
+  mostraDetalhesNovel(novel: any){
+    this.marvelService.comicSelecionada = novel;
+    this.router.navigate(['/novel']);
+  }
+
+  mostraDetalhesSerie(serie: any){
+    this.marvelService.serieSelecionada = serie;
+    this.router.navigate(['/serie']);
+  }
 }

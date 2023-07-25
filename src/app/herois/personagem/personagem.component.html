@@ -8,9 +8,9 @@
 
         <h3> {{ heroi.name }} </h3>
 
-        <div (load)="descricaoHeroi(heroi)">
-            <p>{{heroi.description}}</p>
-        </div>
+        <p (load)="descricaoHeroi(heroi)">
+            {{heroi.description}}
+        </p>
 
         <div>
             <h4>Comics:</h4>
@@ -19,19 +19,19 @@
 
                 <h4>{{ comics.title }}</h4>
 
-                <div *ngFor="let comicsDetalhes of personagemComicsDetalhes">
-                    <img src="{{ comicsDetalhes.thumbnail.path }}/landscape_small.{{ comicsDetalhes.thumbnail.extension }}" alt="{{ comicsDetalhes.title }}">
-                </div>
-
+                <a (click)="mostraDetalhesNovel(comics)">Mais detalhes</a>
             </div>
         </div>
 
         <div>
             <h4>Variações do {{ heroi.name }}</h4>
+            
             <div *ngFor="let semelhantes of personagemVariacoes">
                 <img src="{{ semelhantes.thumbnail.path }}/landscape_small.{{ semelhantes.thumbnail.extension }}" alt="{{ semelhantes.name }}">
 
                 <h4>{{ semelhantes.name }}</h4>
+                
+                <a (click)="mostraDetalhesHeroi(semelhantes)">Mais detalhes</a>
             </div>
         </div>
     </div>
