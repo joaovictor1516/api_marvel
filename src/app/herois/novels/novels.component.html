@@ -4,7 +4,7 @@
 
 <main>
     <div *ngFor="let revistinhas of novels" (mouseenter)="mostraDetalhes(revistinhas)" (mouseleave)="escondeDetalhes()">
-        <img src="{{ revistinhas.thumbnail.path}}/landscape_small.{{ revistinhas.thumbnail.extension }}" alt="novels">
+        <img src="{{ revistinhas.thumbnail.path}}/portrait_xlarge.{{ revistinhas.thumbnail.extension }}" alt="novels">
         <div *ngIf="revistinhas.detalhes" class="detalhes">
             <h3>{{ revistinhas.title }}</h3>
             <h4>Personagens:</h4>
