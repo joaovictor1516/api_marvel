@@ -15,12 +15,21 @@ export class MarvelService {
   baseUrl:string = "https://gateway.marvel.com/v1/public";
   timeStemp:string = new Date().getTime().toString();
   hash:string = CryptoJS.MD5(this.timeStemp + this.privateKey + this.publicKey).toString();
+  extensao = `?ts=${this.timeStemp}&apikey=${this.publicKey}&hash=${this.hash}`
   personagemSelecionado: any = [];
   serieSelecionada: any = [];
   comicSelecionada:any = [];
 
   getCharacters(){
-    const url:string = `${this.baseUrl}/characters?ts=${this.timeStemp}&apikey=${this.publicKey}&hash=${this.hash}`;
+    const url:string = `${this.baseUrl}/characters${this.extensao}`;
+    
+    const headers = new HttpHeaders().set("Content-Type", "application/json");
+
+    return this.http.get(url, { headers });
+  }
+
+  getCharactersId(id: number){
+    const url:string = `${this.baseUrl}/characters/${id}${this.extensao}`;
     
     const headers = new HttpHeaders().set("Content-Type", "application/json");
 
@@ -28,18 +37,34 @@ export class MarvelService {
   }
 
   getNovels(){
-    const url:string = `${this.baseUrl}/comics?ts=${this.timeStemp}&apikey=${this.publicKey}&hash=${this.hash}`;
+    const url:string = `${this.baseUrl}/comics${this.extensao}`;
 
     const headers = new HttpHeaders().set("Content-Type", "application/json");
 
     return this.http.get(url, { headers });
   }
 
+  getNovelsId(id: number){
+    const url:string = `${this.baseUrl}/comics/${id}${this.extensao}`;
+    
+    const headers = new HttpHeaders().set("Content-Type", "application/json");
+
+    return this.http.get(url, { headers });
+  }
+
   getSeries(){
-    const url: string = `${this.baseUrl}/series?ts=${this.timeStemp}&apikey=${this.publicKey}&hash=${this.hash}`;
+    const url: string = `${this.baseUrl}/series${this.extensao}`;
 
     const headers = new HttpHeaders().set("Content-Type", "application/json");
 
     return this.http.get(url,{ headers });
+  }
+
+  getSeriesId(id: number){
+    const url:string = `${this.baseUrl}/series/${id}${this.extensao}`;
+    
+    const headers = new HttpHeaders().set("Content-Type", "application/json");
+
+    return this.http.get(url, { headers });
   }
 }
