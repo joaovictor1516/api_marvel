@@ -34,6 +34,14 @@ export class MarvelService {
     const headers = new HttpHeaders().set("Content-Type", "application/json");
 
     return this.http.get(url, { headers });
+  } 
+
+  getCharactersIdNovels(id: number){
+    const url:string = `${this.baseUrl}/characters/${id}/comics${this.extensao}`;
+    
+    const headers = new HttpHeaders().set("Content-Type", "application/json");
+
+    return this.http.get(url, { headers });
   }
 
   getNovels(){
@@ -46,6 +54,14 @@ export class MarvelService {
 
   getNovelsId(id: number){
     const url:string = `${this.baseUrl}/comics/${id}${this.extensao}`;
+    
+    const headers = new HttpHeaders().set("Content-Type", "application/json");
+
+    return this.http.get(url, { headers });
+  }
+
+  getNovelsIdCharacters(id: number){
+    const url:string = `${this.baseUrl}/comics/${id}/characters${this.extensao}`;
     
     const headers = new HttpHeaders().set("Content-Type", "application/json");
 
