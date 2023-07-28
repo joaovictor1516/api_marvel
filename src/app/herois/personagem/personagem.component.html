@@ -4,7 +4,7 @@
 
 <main>
     <div *ngFor="let heroi of personagemDados">
-        <img src="{{ heroi.thumbnail.path }}/landscape_xlarge.{{ heroi.thumbnail.extension }}" alt="{{ heroi.name }}">
+        <img src="{{ heroi.thumbnail.path }}/portrait_xlarge.{{ heroi.thumbnail.extension }}" alt="{{ heroi.name }}">
 
         <h3> {{ heroi.name }} </h3>
 
@@ -15,7 +15,7 @@
         <div>
             <h4>Comics:</h4>
             <div *ngFor="let comics of personagemComics">
-                <img src="{{ comics.thumbnail.path }}/landscape_xlarge.{{ comics.thumbnail.extension }}" alt="{{ comics.title }}">
+                <img src="{{ comics.thumbnail.path }}/portrait_medium.{{ comics.thumbnail.extension }}" alt="{{ comics.title }}">
 
                 <h4>{{ comics.title }}</h4>
 
@@ -24,10 +24,24 @@
         </div>
 
         <div>
+            <h4>Series:</h4>
+
+            <div *ngFor="let series of personagemSeries">
+                <img src="{{ series.thumbnail.path }}/portrait_medium.{{ series.thumbnail.extension }}" alt="{{ series.title }}">
+
+                <h4>{{ series.title }}</h4>
+
+                <p>{{ series.description }}</p>
+
+                <a (click)="mostraDetalhesSerie(series)"> Mais detalhes</a>
+            </div>
+        </div>
+
+        <div>
             <h4>Variações do {{ heroi.name }}</h4>
             
             <div *ngFor="let semelhantes of personagemVariacoes">
-                <img src="{{ semelhantes.thumbnail.path }}/landscape_small.{{ semelhantes.thumbnail.extension }}" alt="{{ semelhantes.name }}">
+                <img src="{{ semelhantes.thumbnail.path }}/portrait_medium.{{ semelhantes.thumbnail.extension }}" alt="{{ semelhantes.name }}">
 
                 <h4>{{ semelhantes.name }}</h4>
                 
