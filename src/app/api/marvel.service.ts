@@ -44,6 +44,22 @@ export class MarvelService {
     return this.http.get(url, { headers });
   }
 
+  getCharactersIdSeries(id: number){
+    const url:string = `${this.baseUrl}/characters/${id}/series${this.extensao}`;
+    
+    const headers = new HttpHeaders().set("Content-Type", "application/json");
+
+    return this.http.get(url, { headers });
+  }
+
+  getCharactersIdStories(id: number){
+    const url:string = `${this.baseUrl}/characters/${id}/stories${this.extensao}`;
+    
+    const headers = new HttpHeaders().set("Content-Type", "application/json");
+
+    return this.http.get(url, { headers });
+  }
+
   getNovels(){
     const url:string = `${this.baseUrl}/comics${this.extensao}`;
 
