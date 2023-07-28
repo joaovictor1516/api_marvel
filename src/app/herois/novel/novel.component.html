@@ -4,8 +4,20 @@
 
 <main>
     <div *ngFor="let novel of comicDados">
-        <img src="{{ novel.thumbnail.path }}/landscape_xlarge.{{ novel.thumbnail.extension }}" alt="{{ novel.title }}">
+        <img src="{{ novel.thumbnail.path }}/portrait_xlarge.{{ novel.thumbnail.extension }}" alt="{{ novel.title }}">
 
         <h3>{{ novel.title }}</h3>
+
+        <p>{{ novel.description }}</p>
+
+        <p>Personagens da novel</p>
+        
+        <div *ngFor="let personagens of herois" class="detalhes">
+            <img src="{{ personagens.thumbnail.path }}/portrait_medium.{{ personagens.thumbnail.extension }}" alt="{{ personagens.name }}">
+
+            <h5>{{ personagens.name }}</h5>
+
+            <p> {{ personagens.description }} </p>
+        </div>
     </div>
 </main>
