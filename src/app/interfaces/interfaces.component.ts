@@ -1,3 +1,15 @@
+export interface Url{
+  type: string;
+  url: string;
+}
+
+export interface SeriesList{
+  available: number;
+  returned: number;
+  collectionURI: string;
+  items: SeriesSummary[];
+}
+
 export interface SeriesSummary{
   resourceURI: string;
   name: string;
@@ -74,6 +86,18 @@ export interface EventSummary{
   name: string;
 }
 
+export interface ComicList{
+  available: number;
+  returned: number;
+  collectionURI: string;
+  items: ComicSummary[];
+}
+
+export interface ComicSummary{
+  resourceURI: string;
+  name: string;
+}
+
 export interface Comic{
   id: number;
   digitalId: number;
@@ -91,7 +115,7 @@ export interface Comic{
   pageCount: number;
   textObjects: object[];
   resourceURI: string;
-  urls: URL[];
+  urls: Url[];
   series: SeriesSummary;
   variants: ComicSummary[];
   collections: ComicSummary
@@ -106,66 +130,36 @@ export interface Comic{
   events: EventList;
 }
 
-export interface Herois{
+export interface Character{
   id: number;
-  digitalId: number;
   name: string;
-  issueNumber: number;
-  variantDescription: string;
   description: string;
   modified: Date;
-  isbn: string;
-  upc: string;
-  diamondCode: string;
-  ean: string;
-  issn: string;
-  format: string;
-  pageCount: number;
-  textObjects: object[];
-  resourceURI: string;
-  urls: URL[];
-  series: SeriesSummary;
-  variants: ComicSummary[];
-  collections: ComicSummary
-  collectedIssues: ComicSummary[];
-  dates: ComicDate[];
-  prices: ComicPrice[];
+  resosourceURI: string;
+  urls: Url[];
   thumbnail: Image;
-  images: Image[];
-  creators: CreatorList;
-  characters: CharacterList;
+  comics: ComicList;
   stories: StoryList;
   events: EventList;
+  series: SeriesList;
 }
 
 export interface Series{
   id: number;
-  digitalId: number;
   title: string;
-  issueNumber: number;
-  variantDescription: string;
   description: string;
-  modified: Date;
-  isbn: string;
-  upc: string;
-  diamondCode: string;
-  ean: string;
-  issn: string;
-  format: string;
-  pageCount: number;
-  textObjects: object[];
   resourceURI: string;
-  urls: URL[];
-  series: SeriesSummary;
-  variants: ComicSummary[];
-  collections: ComicSummary
-  collectedIssues: ComicSummary[];
-  dates: ComicDate[];
-  prices: ComicPrice[];
+  urls: Url[];
+  startYear: number;
+  endYear: number;
+  rating: number;
+  modified: Date;
   thumbnail: Image;
-  images: Image[];
-  creators: CreatorList;
-  characters: CharacterList;
+  comics: ComicList;
   stories: StoryList;
   events: EventList;
+  characters: CharacterList;
+  creators: CreatorList;
+  next: SeriesSummary;
+  previus: SeriesSummary;
 }
