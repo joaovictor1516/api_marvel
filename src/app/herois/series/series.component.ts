@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { MarvelService } from 'src/app/api/marvel.service';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
+import { Series } from 'src/app/interfaces/interfaces.component';
 
 @Component({
   selector: 'app-series',
@@ -10,7 +11,7 @@ import { take } from 'rxjs/operators';
 })
 
 export class SeriesComponent implements OnInit{
-  seriesHerois: any = [];
+  seriesHerois: Series[] = [];
 
   constructor(private marvelService: MarvelService, private router: Router){}
 
@@ -26,19 +27,19 @@ export class SeriesComponent implements OnInit{
       })
   }
 
-  mostraDetalhes(series: any){
+  mostraDetalhes(series: Series){
     series.detalhes = true;
-    this.seriesHerois.forEach((element: any) => {
+    this.seriesHerois.forEach((element: Series) => {
       if(element.comics.items.length >= 1){
-        element.quadrinho = true;
+        element.temComic = true;
       } else{
-        element.quadrinho = false;
+        element.temComic = false;
       }
     })
   }
 
   escondeDetalhes(){
-    this.seriesHerois.forEach((element: any) => {
+    this.seriesHerois.forEach((element: Series) => {
       element.detalhes = false;
     })
   }

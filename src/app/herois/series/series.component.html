@@ -4,11 +4,11 @@
 
 <main>
     <div *ngFor="let series of seriesHerois" (mouseenter)="mostraDetalhes(series)" (mouseleave)="escondeDetalhes()">
-        <img src="{{ series.thumbnail.path }}/portrait_xlarge.jpg" alt="{{ series.name }}" >
+        <img src="{{ series.thumbnail.path }}/portrait_xlarge.jpg" alt="{{ series.title }}" >
     
         <div *ngIf="series.detalhes" class="detalhes">
             <h3>{{ series.title }}</h3>
-            <div *ngIf="series.quadrinho" class="detalhes">
+            <div *ngIf="series.temComic" class="detalhes">
                 <h4>Comics da serie: </h4>
                 <div *ngFor="let comics of series.comics.items | limit: 3" class="detalhes">
                     <p>{{ comics.name }}</p>
