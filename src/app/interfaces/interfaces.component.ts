@@ -128,6 +128,8 @@ export interface Comic{
   characters: CharacterList;
   stories: StoryList;
   events: EventList;
+  detalhes: boolean;
+  temHerois: boolean;
 }
 
 export interface Character{
@@ -142,6 +144,8 @@ export interface Character{
   stories: StoryList;
   events: EventList;
   series: SeriesList;
+  detalhes: boolean;
+  temComic: boolean;
 }
 
 export interface Series{
@@ -162,4 +166,6 @@ export interface Series{
   creators: CreatorList;
   next: SeriesSummary;
   previus: SeriesSummary;
+  detalhes: boolean;
+  temComic: boolean
 }
