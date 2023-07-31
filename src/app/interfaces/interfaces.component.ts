@@ -146,6 +146,7 @@ export interface Character{
   series: SeriesList;
   detalhes: boolean;
   temComic: boolean;
+  temSeries: boolean;
 }
 
 export interface Series{
@@ -167,5 +168,6 @@ export interface Series{
   next: SeriesSummary;
   previus: SeriesSummary;
   detalhes: boolean;
-  temComic: boolean
+  temComic: boolean;
+  temHerois: boolean;
 }
