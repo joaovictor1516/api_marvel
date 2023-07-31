@@ -1,7 +1,7 @@
-import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs';
 import { MarvelService } from 'src/app/api/marvel.service';
+import { Character, Comic, Series } from 'src/app/interfaces/interfaces.component';
 
 @Component({
   selector: 'app-serie',
@@ -9,29 +9,52 @@ import { MarvelService } from 'src/app/api/marvel.service';
   styleUrls: ['./serie.component.css']
 })
 export class SerieComponent implements OnInit {
-  serie: any = [];
-  serieDados: any = [];
-
-  constructor(private marvelService: MarvelService, private http: HttpClient){}
+  serie: Series = {} as Series;
+  serieDados: Series[] = [];
+  serieHerois: Character[] = [];
+  serieComics: Comic[] = [];
+  constructor(private marvelService: MarvelService){}
 
   ngOnInit(): void {
       this.serie = this.marvelService.serieSelecionada;
-      this.getSerie().pipe(take(1)).subscribe({
+      
+      this.marvelService.getSeriesId(this.serie.id).pipe(take(1)).subscribe({
         next: (response: any) => {
           this.serieDados = response.data.results;
-          console.log(this.serieDados);
         },
         error: (error: any) => {
           console.error(error);
         }
       });
+
+      this.marvelService.getSeriesIdCharacters(this.serie.id).pipe(take(1)).subscribe({
+        next: (response: any) => {
+          this.serieHerois = response.data.results;
+          console.log(this.serieHerois);
+        },
+        error: (error: any) => {
+          console.error(error);
+        }
+      });
+
+      this.marvelService.getSeriesIdComics(this.serie.id).pipe(take(1)).subscribe({
+        next: (response: any) => {
+          this.serieComics = response.data.results;
+          console.log(this.serieComics);
+        },
+        error: (error: any) => {
+          console.error(error);
+        }
+      })
+    this.conferePersonagens(this.serie)
   }
 
-  getSerie(){
-    const url:string = `${this.marvelService.baseUrl}/series/${this.serie.id}?ts=${this.marvelService.timeStemp}&apikey=${this.marvelService.publicKey}&hash=${this.marvelService.hash}`;
-
-    const headers = new HttpHeaders().set("Content-Type", "application/json");
-
-    return this.http.get(url,{ headers });
+  conferePersonagens(serie: Series){ 
+    console.log("vai a merda")
+    if(serie.characters.items.length > 0){
+      serie.temHerois = true;
+    } else{
+      serie.temHerois = false;
+    }
   }
 }

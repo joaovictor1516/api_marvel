@@ -3,13 +3,22 @@
 </header>
 
 <main>
-    <div *ngFor="let serie of serieDados">
+    <div *ngFor="let serie of serieDados" >
+      {{conferePersonagens(serie)}}
       <img src="{{ serie.thumbnail.path }}/landscape_xlarge.{{ serie.thumbnail.extension }}" alt="{{ serie.title }}">
       <h3>{{ serie.title }}</h3>
-      <h4>personagens:</h4>
-      <div *ngFor="let personagem of serie.characters.items">
-        <h5>{{ personagem.name }}</h5>
-        
+      
+      <div *ngIf="serie.temHerois; else serieSemHeroi">
+        <h4>personagens:</h4>
+        <div *ngFor="let personagem of serieHerois">
+          <h5>{{ personagem.name }}</h5>
+        </div>
       </div>
+
+      <ng-template #serieSemHeroi>
+        <p>A serie nao contem personagens.</p>
+      </ng-template>
+
+      <div></div>
     </div>
   </main>
