@@ -61,7 +61,7 @@ export class PersonagemComponent implements OnInit{
     })
   }
 
-  descricaoHeroi(heroi: any){
+  descricaoHeroi(heroi: Character){
     if(heroi.description === ""){
       heroi.description = "Description is unndefined";
     }
