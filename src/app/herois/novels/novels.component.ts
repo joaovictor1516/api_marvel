@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MarvelService } from 'src/app/api/marvel.service';
 import { take } from 'rxjs/operators'
 import { Router } from '@angular/router';
+import { Comic } from 'src/app/interfaces/interfaces.component';
 
 @Component({
   selector: 'app-novels',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./novels.component.css']
 })
 export class NovelsComponent implements OnInit{
-  novels:any[] = [];
+  novels:Comic[] = [];
 
   constructor(private marvelService: MarvelService, private router: Router){}
 
@@ -25,14 +26,12 @@ export class NovelsComponent implements OnInit{
     })
   }
 
-  mostraDetalhes(novel: any){
+  mostraDetalhes(novel: Comic){
     novel.detalhes = true;
     if(novel.characters.items.length > 0){
-      novel.temPersonagens = true;
-      novel.semPersonagens = false
+      novel.temHerois = true;
     } else{
-      novel.semPersonagens = true;
-      novel.temPersonagens = false;
+      novel.temHerois = false;
     }
   }
 
@@ -42,7 +41,7 @@ export class NovelsComponent implements OnInit{
     })
   }
 
-  maisDetalhes(novel: any){
+  maisDetalhes(novel: Comic){
     this.marvelService.comicSelecionada = novel;
     this.router.navigate(['/novel']);
   }
