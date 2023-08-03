@@ -6,7 +6,7 @@
     <div *ngFor="let serie of serieDados" >
       {{conferePersonagens(serie)}}
       {{confereComics(serie)}}
-      
+
       <img src="{{ serie.thumbnail.path }}/portrait_xlarge.{{ serie.thumbnail.extension }}" alt="{{ serie.title }}">
       <h3>{{ serie.title }}</h3>
       
@@ -16,6 +16,7 @@
           <img src="{{ personagem.thumbnail.path }}/portrait_medium.{{ personagem.thumbnail.extension }}" alt="personagem.name">
 
           <h5>{{ personagem.name }}</h5>
+          <a (click)="maisDetalhesPersonagem(personagem)">Ver mais</a>
         </div>
       </div>
 
@@ -29,6 +30,7 @@
           <img src="{{ comic.thumbnail.path }}/portrait_medium.{{ comic.thumbnail.extension }}" alt="{{ comic.title }}">
 
           <h5>{{ comic.title }}</h5>
+          <a (click)="maisDetalhesComic(comic)">Ver mais</a>
         </div>
       </div>
 

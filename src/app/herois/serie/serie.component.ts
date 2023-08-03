@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs';
 import { MarvelService } from 'src/app/api/marvel.service';
 import { Character, Comic, Series } from 'src/app/interfaces/interfaces.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-serie',
@@ -13,7 +14,7 @@ export class SerieComponent implements OnInit {
   serieDados: Series[] = [];
   serieHerois: Character[] = [];
   serieComics: Comic[] = [];
-  constructor(private marvelService: MarvelService){}
+  constructor(private marvelService: MarvelService, private router: Router){}
 
   ngOnInit(): void {
       this.serie = this.marvelService.serieSelecionada;
@@ -63,4 +64,14 @@ export class SerieComponent implements OnInit {
       serie.temComic = false;
     }
   }
+
+maisDetalhesPersonagem(personagem: Character){
+  this.marvelService.personagemSelecionado = personagem;
+  this.router.navigate(["/personagem"]);
+}
+
+maisDetalhesComic(comic: Comic){
+  this.marvelService.comicSelecionada = comic;
+  this.router.navigate(['/novel']);
+}
 }
