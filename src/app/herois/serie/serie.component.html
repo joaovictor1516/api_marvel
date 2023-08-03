@@ -5,12 +5,16 @@
 <main>
     <div *ngFor="let serie of serieDados" >
       {{conferePersonagens(serie)}}
-      <img src="{{ serie.thumbnail.path }}/landscape_xlarge.{{ serie.thumbnail.extension }}" alt="{{ serie.title }}">
+      {{confereComics(serie)}}
+      
+      <img src="{{ serie.thumbnail.path }}/portrait_xlarge.{{ serie.thumbnail.extension }}" alt="{{ serie.title }}">
       <h3>{{ serie.title }}</h3>
       
       <div *ngIf="serie.temHerois; else serieSemHeroi">
         <h4>personagens:</h4>
         <div *ngFor="let personagem of serieHerois">
+          <img src="{{ personagem.thumbnail.path }}/portrait_medium.{{ personagem.thumbnail.extension }}" alt="personagem.name">
+
           <h5>{{ personagem.name }}</h5>
         </div>
       </div>
@@ -19,6 +23,17 @@
         <p>A serie nao contem personagens.</p>
       </ng-template>
 
-      <div></div>
+      <div *ngIf="serie.temComic; else serieSemComic">
+        <h4>comics:</h4>
+        <div *ngFor="let comic of serieComics">
+          <img src="{{ comic.thumbnail.path }}/portrait_medium.{{ comic.thumbnail.extension }}" alt="{{ comic.title }}">
+
+          <h5>{{ comic.title }}</h5>
+        </div>
+      </div>
+
+      <ng-template #serieSemComic>
+        <p>A serie nao contem comics</p>
+      </ng-template>
     </div>
   </main>

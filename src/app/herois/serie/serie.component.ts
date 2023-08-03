@@ -46,15 +46,21 @@ export class SerieComponent implements OnInit {
           console.error(error);
         }
       })
-    this.conferePersonagens(this.serie)
   }
 
-  conferePersonagens(serie: Series){ 
-    console.log("vai a merda")
+  conferePersonagens(serie: Series){
     if(serie.characters.items.length > 0){
       serie.temHerois = true;
     } else{
       serie.temHerois = false;
+    }
+  }
+
+  confereComics(serie: Series){
+    if(serie.comics.items.length > 0){
+      serie.temComic = true;
+    } else{
+      serie.temComic = false;
     }
   }
 }
