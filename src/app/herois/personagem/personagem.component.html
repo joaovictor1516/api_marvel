@@ -17,7 +17,7 @@
             <div *ngFor="let comics of personagemComics">
                 <img src="{{ comics.thumbnail.path }}/portrait_medium.{{ comics.thumbnail.extension }}" alt="{{ comics.title }}">
 
-                <h4>{{ comics.title }}</h4>
+                <h5>{{ comics.title }}</h5>
 
                 <a (click)="mostraDetalhesNovel(comics)">Mais detalhes</a>
             </div>
@@ -29,9 +29,7 @@
             <div *ngFor="let series of personagemSeries">
                 <img src="{{ series.thumbnail.path }}/portrait_medium.{{ series.thumbnail.extension }}" alt="{{ series.title }}">
 
-                <h4>{{ series.title }}</h4>
-
-                <p>{{ series.description }}</p>
+                <h5>{{ series.title }}</h5>
 
                 <a (click)="mostraDetalhesSerie(series)"> Mais detalhes</a>
             </div>
@@ -43,7 +41,7 @@
             <div *ngFor="let semelhantes of personagemVariacoes">
                 <img src="{{ semelhantes.thumbnail.path }}/portrait_medium.{{ semelhantes.thumbnail.extension }}" alt="{{ semelhantes.name }}">
 
-                <h4>{{ semelhantes.name }}</h4>
+                <h5>{{ semelhantes.name }}</h5>
                 
                 <a (click)="mostraDetalhesHeroi(semelhantes)">Mais detalhes</a>
             </div>
