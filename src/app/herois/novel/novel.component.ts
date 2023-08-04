@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MarvelService } from 'src/app/api/marvel.service'; 
 import { take } from 'rxjs';
-import { Comic, Character } from 'src/app/interfaces/interfaces.component';
+import { Comic, Character, Series } from 'src/app/interfaces/interfaces.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-novel',
@@ -12,9 +13,9 @@ import { Comic, Character } from 'src/app/interfaces/interfaces.component';
 export class NovelComponent implements OnInit{
   comic: Comic = {} as Comic;
   comicDados: Comic[] = [];
-  herois: Character[] = [];
+  comicHerois: Character[] = [];
 
-  constructor(private marvelService: MarvelService){}
+  constructor(private marvelService: MarvelService, private router: Router){}
 
   ngOnInit(): void {
       this.comic = this.marvelService.comicSelecionada;
@@ -30,11 +31,16 @@ export class NovelComponent implements OnInit{
 
       this.marvelService.getNovelsIdCharacters(this.comic.id).pipe(take(1)).subscribe({
         next: (response: any) => {
-          this.herois = response.data.results;
+          this.comicHerois = response.data.results;
         },
         error: (error: any) => {
           console.error(error);
         }
       })
+  }
+
+  maisDetalhesPersonagem(personagem: Character){
+    this.marvelService.personagemSelecionado = personagem;
+    this.router.navigate(["/personagem"]);
   }
 }

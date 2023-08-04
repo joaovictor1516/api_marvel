@@ -10,14 +10,14 @@
 
         <p>{{ novel.description }}</p>
 
-        <p>Personagens da novel</p>
+        <h4>Personagens da novel:</h4>
         
-        <div *ngFor="let personagens of herois" class="detalhes">
+        <div *ngFor="let personagens of comicHerois" class="detalhes">
             <img src="{{ personagens.thumbnail.path }}/portrait_medium.{{ personagens.thumbnail.extension }}" alt="{{ personagens.name }}">
 
             <h5>{{ personagens.name }}</h5>
 
-            <p> {{ personagens.description }} </p>
+            <a (click)="maisDetalhesPersonagem(personagens)">Ver mais</a>
         </div>
     </div>
 </main>
