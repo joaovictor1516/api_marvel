@@ -15,7 +15,7 @@ export class MarvelService {
   baseUrl:string = "https://gateway.marvel.com/v1/public";
   timeStemp:string = new Date().getTime().toString();
   hash:string = CryptoJS.MD5(this.timeStemp + this.privateKey + this.publicKey).toString();
-  extensao = `?ts=${this.timeStemp}&apikey=${this.publicKey}&hash=${this.hash}`
+  extensao = `?ts=${this.timeStemp}&apikey=${this.publicKey}&hash=${this.hash}`;
   personagemSelecionado: any = [];
   serieSelecionada: any = [];
   comicSelecionada:any = [];
