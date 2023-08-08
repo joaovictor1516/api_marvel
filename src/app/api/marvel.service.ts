@@ -21,19 +21,19 @@ export class MarvelService {
   personagemSelecionado:Character[] = [];
   serieSelecionada:Series[] = [];
   comicSelecionada:Comic[] = [];
-
-  getSearchCharacters(hero: string){
-    const url:string = `${this.baseUrl}/characters?nameStartsWith=${hero}${this.extensaoSearch}`;
-
-    const headers = new HttpHeaders().set("Content-Type", "aplication/json");
-
-    return this.http.get(url, { headers });
-  }
   
   getCharacters(){
     const url:string = `${this.baseUrl}/characters${this.extensao}`;
     
     const headers = new HttpHeaders().set("Content-Type", "application/json");
+
+    return this.http.get(url, { headers });
+  }
+
+  getSearchCharacters(hero: string){
+    const url:string = `${this.baseUrl}/characters?nameStartsWith=${hero}${this.extensaoSearch}`;
+
+    const headers = new HttpHeaders().set("Content-Type", "aplication/json");
 
     return this.http.get(url, { headers });
   }
@@ -78,6 +78,14 @@ export class MarvelService {
     return this.http.get(url, { headers });
   }
 
+  getSearchNovels(novel: string){
+    const url:string = `${this.baseUrl}/comics?nameStartsWith=${novel}${this.extensaoSearch}`;
+
+    const headers = new HttpHeaders().set("Content-Type", "aplication/json");
+
+    return this.http.get(url, { headers });
+  }
+
   getNovelsId(id: number){
     const url:string = `${this.baseUrl}/comics/${id}${this.extensao}`;
     
@@ -108,6 +116,14 @@ export class MarvelService {
     const headers = new HttpHeaders().set("Content-Type", "application/json");
 
     return this.http.get(url,{ headers });
+  }
+
+  getSearchSeries(serie: string){
+    const url:string = `${this.baseUrl}/characters?nameStartsWith=${serie}${this.extensaoSearch}`;
+
+    const headers = new HttpHeaders().set("Content-Type", "aplication/json");
+
+    return this.http.get(url, { headers });
   }
 
   getSeriesId(id: number){
