@@ -24,6 +24,10 @@ export class MarvelService {
 
   getSearchCharacters(hero: string){
     const url:string = `${this.baseUrl}/characters?nameStartsWith=${hero}${this.extensaoSearch}`;
+
+    const headers = new HttpHeaders().set("Content-Type", "aplication/json");
+
+    return this.http.get(url, { headers });
   }
   
   getCharacters(){
