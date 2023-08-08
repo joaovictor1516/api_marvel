@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 
 import * as CryptoJS from 'crypto-js';
+import { Character, Series, Comic } from '../interfaces/interfaces.component';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,16 @@ export class MarvelService {
   baseUrl:string = "https://gateway.marvel.com/v1/public";
   timeStemp:string = new Date().getTime().toString();
   hash:string = CryptoJS.MD5(this.timeStemp + this.privateKey + this.publicKey).toString();
-  extensao = `?ts=${this.timeStemp}&apikey=${this.publicKey}&hash=${this.hash}`;
-  personagemSelecionado: any = [];
-  serieSelecionada: any = [];
-  comicSelecionada:any = [];
+  extensao:string = `?ts=${this.timeStemp}&apikey=${this.publicKey}&hash=${this.hash}`;
+  extensaoSearch:string = `&ts=${this.timeStemp}&apikey=${this.publicKey}&hash=${this.hash}`;
+  personagemSelecionado:Character[] = [];
+  serieSelecionada:Series[] = [];
+  comicSelecionada:Comic[] = [];
 
+  getSearchCharacters(hero: string){
+    const url:string = `${this.baseUrl}/characters?nameStartsWith=${hero}${this.extensaoSearch}`;
+  }
+  
   getCharacters(){
     const url:string = `${this.baseUrl}/characters${this.extensao}`;
     
