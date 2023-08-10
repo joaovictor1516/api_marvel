@@ -18,9 +18,9 @@ export class MarvelService {
   hash:string = CryptoJS.MD5(this.timeStemp + this.privateKey + this.publicKey).toString();
   extensao:string = `?ts=${this.timeStemp}&apikey=${this.publicKey}&hash=${this.hash}`;
   extensaoSearch:string = `&ts=${this.timeStemp}&apikey=${this.publicKey}&hash=${this.hash}`;
-  personagemSelecionado:Character[] = [];
-  serieSelecionada:Series[] = [];
-  comicSelecionada:Comic[] = [];
+  personagemSelecionado:Character = {} as Character;
+  serieSelecionada:Series = {} as Series;
+  comicSelecionada:Comic = {} as Comic;
   
   getCharacters(){
     const url:string = `${this.baseUrl}/characters${this.extensao}`;
