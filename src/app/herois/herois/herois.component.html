@@ -1,10 +1,14 @@
 <header>
     <app-navebar/>
+    <div>
+        <input type="text" #hero>
+        <button (click)="pesquisarHeroi(hero)">pesquisar</button>
+    </div>
 </header>
 
 <main>
     <div *ngFor="let herois of heros" (mouseenter)="mostraDetalhes(herois)" (mouseleave)="escondeDetalhes()">
-        <img src="{{ herois.thumbnail.path }}/portrait_xlarge.{{ herois.thumbnail.extension }}" alt="{{ herois.nome }}">
+        <img src="{{ herois.thumbnail.path }}/portrait_xlarge.{{ herois.thumbnail.extension }}" alt="{{ herois.name }}">
 
         <div *ngIf="herois.detalhes" class="detalhes">
             <h3>{{ herois.name }}</h3>

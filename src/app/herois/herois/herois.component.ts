@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MarvelService } from 'src/app/api/marvel.service';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators'
+import { Character } from 'src/app/interfaces/interfaces.component';
 
 @Component({
   selector: 'app-herois',
@@ -9,7 +10,7 @@ import { take } from 'rxjs/operators'
   styleUrls: ['./herois.component.css']
 })
 export class HeroisComponent implements OnInit{
-  heros: any[] = [];
+  heros: Character[] = [];
 
   constructor(private marvelService: MarvelService, private router: Router){}
 
@@ -21,7 +22,7 @@ export class HeroisComponent implements OnInit{
       error: (error: any) => {
         console.error(error);
       }
-    })
+    });
   }
 
   mostraDetalhes(personagem: any){
@@ -40,5 +41,20 @@ export class HeroisComponent implements OnInit{
   maisDetalhes(personagem: any){
     this.marvelService.personagemSelecionado = personagem;
     this.router.navigate(['/personagem']);
+  }
+
+  pesquisarHeroi(hero: any){
+    if(hero !== ""){
+      this.marvelService.getSearchCharacters(hero.value).pipe(take(1)).subscribe({
+        next: (response: any) => {
+          this.heros = response.data.results;
+          console.log(hero);
+          console.log(this.heros);
+        },
+        error: (error: any) => {
+          console.error(error);
+        }
+      })
+    }
   }
 }
