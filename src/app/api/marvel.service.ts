@@ -119,7 +119,7 @@ export class MarvelService {
   }
 
   getSearchSeries(serie: string){
-    const url:string = `${this.baseUrl}/characters?titleStartsWith=${serie}${this.extensaoSearch}`;
+    const url:string = `${this.baseUrl}/series?titleStartsWith=${serie}${this.extensaoSearch}`;
 
     const headers = new HttpHeaders().set("Content-Type", "aplication/json");
 
