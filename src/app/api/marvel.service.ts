@@ -79,7 +79,7 @@ export class MarvelService {
   }
 
   getSearchNovels(novel: string){
-    const url:string = `${this.baseUrl}/comics?nameStartsWith=${novel}${this.extensaoSearch}`;
+    const url:string = `${this.baseUrl}/comics?titleStartsWith=${novel}${this.extensaoSearch}`;
 
     const headers = new HttpHeaders().set("Content-Type", "aplication/json");
 
@@ -119,7 +119,7 @@ export class MarvelService {
   }
 
   getSearchSeries(serie: string){
-    const url:string = `${this.baseUrl}/characters?nameStartsWith=${serie}${this.extensaoSearch}`;
+    const url:string = `${this.baseUrl}/characters?titleStartsWith=${serie}${this.extensaoSearch}`;
 
     const headers = new HttpHeaders().set("Content-Type", "aplication/json");
 
