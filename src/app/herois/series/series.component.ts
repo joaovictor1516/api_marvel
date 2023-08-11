@@ -48,4 +48,15 @@ export class SeriesComponent implements OnInit{
     this.marvelService.serieSelecionada = serie;
     this.router.navigate(['/serie']);
   }
+
+  pesquisarSerie(serie: any){
+    this.marvelService.getSearchSeries(serie.value).pipe(take(1)).subscribe({
+      next: (response: any) => {
+        this.seriesHerois = response.data.results;
+      },
+      error: (error: any) => {
+        console.error(error);
+      }
+    })
+  }
 }

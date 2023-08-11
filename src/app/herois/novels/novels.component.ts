@@ -18,7 +18,6 @@ export class NovelsComponent implements OnInit{
     this.marvelService.getNovels().pipe(take(1)).subscribe({
       next: (response: any) =>{
         this.novels = response.data.results;
-        console.log(this.novels);
       },
       error: (error: any) => {
         console.error(error);
@@ -44,5 +43,16 @@ export class NovelsComponent implements OnInit{
   maisDetalhes(novel: Comic){
     this.marvelService.comicSelecionada = novel;
     this.router.navigate(['/novel']);
+  }
+
+  pesquisarNovel(novel: any){
+    this.marvelService.getSearchNovels(novel.value).pipe(take(1)).subscribe({
+      next: (response: any) => {
+        this.novels = response.data.results;
+      },
+      error: (error: any) => {
+        console.error(error);
+      }
+    })
   }
 }
