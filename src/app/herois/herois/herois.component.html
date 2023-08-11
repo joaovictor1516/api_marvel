@@ -1,7 +1,7 @@
 <header>
         <img src="../../../assets/marvelLogo.png" alt="Logo da Marvel" id="marvelLogo">
         <app-navebar/>
-        <input type="text" #hero>
+        <input type="text" [ngModel]=hero>
         <button (click)="pesquisarHeroi(hero)">pesquisar</button>
 </header>
 

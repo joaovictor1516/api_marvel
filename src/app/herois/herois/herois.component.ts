@@ -11,6 +11,7 @@ import { Character } from 'src/app/interfaces/interfaces.component';
 })
 export class HeroisComponent implements OnInit{
   heros: Character[] = [];
+  hero: string = "";
 
   constructor(private marvelService: MarvelService, private router: Router){}
 
@@ -43,18 +44,16 @@ export class HeroisComponent implements OnInit{
     this.router.navigate(['/personagem']);
   }
 
-  pesquisarHeroi(hero: any){
-    if(hero !== ""){
-      this.marvelService.getSearchCharacters(hero.value).pipe(take(1)).subscribe({
-        next: (response: any) => {
-          this.heros = response.data.results;
-          console.log(hero);
-          console.log(this.heros);
-        },
-        error: (error: any) => {
-          console.error(error);
-        }
-      })
-    }
+  pesquisarHeroi(hero: string){
+    this.marvelService.getSearchCharacters(hero).pipe(take(1)).subscribe({
+      next: (response: any) => {
+        this.heros = response.data.results;
+        console.log(hero);
+        console.log(this.heros);
+      },
+      error: (error: any) => {
+        console.error(error);
+      }
+    })
   }
 }
