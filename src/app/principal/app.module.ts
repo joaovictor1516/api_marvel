@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from 'src/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 
 import { NavebarComponent } from '../navebar/navebar.component';
 import { HeroisComponent } from '../herois/herois/herois.component';
@@ -30,7 +31,8 @@ import { NovelComponent } from '../herois/novel/novel.component';
     BrowserModule,
     HttpClientModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
