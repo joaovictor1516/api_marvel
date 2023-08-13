@@ -1,8 +1,10 @@
 <header>
         <img src="../../../assets/marvelLogo.png" alt="Logo da Marvel" id="marvelLogo">
         <app-navebar/>
-        <input type="text" [ngModel]=hero>
-        <button (click)="pesquisarHeroi(hero)">pesquisar</button>
+        <div class="buscador">
+            <input type="text" [ngModel]=hero>
+            <button (click)="pesquisarHeroi(hero)">pesquisar</button>
+        </div>
 </header>
 
 <main>
