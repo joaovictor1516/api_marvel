@@ -3,6 +3,14 @@
     padding: 0;
 }
 
+header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
 main{
     display: flex;
     flex-direction: row;
@@ -11,7 +19,7 @@ main{
     justify-content: space-around;
 }
 
-div:not(.detalhes){
+div:not(.detalhes,.buscador){
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -39,6 +47,10 @@ a:hover{
     text-decoration: underline #ff6464;
 }
 
+input{
+    width: 150px;
+}
+
 .detalhes{
     display:flex;
     flex-direction:column;
@@ -63,4 +75,9 @@ a:hover{
 .detalhes:hover img{
     width: 150px;
     height: 225px;
+}
+
+#marvelLogo{
+    height: 40px;
+    width: 38px;
 }
