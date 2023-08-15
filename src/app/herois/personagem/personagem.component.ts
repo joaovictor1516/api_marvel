@@ -90,11 +90,11 @@ export class PersonagemComponent implements OnInit{
 
   mostraDetalhesNovel(novel: Comic){
     this.marvelService.comicSelecionada = novel;
-    this.router.navigate(['/novel']);
+    this.router.navigate(['/novel', novel.id]);
   }
 
   mostraDetalhesSerie(serie: Series){
     this.marvelService.serieSelecionada = serie;
-    this.router.navigate(['/serie']);
+    this.router.navigate(['/serie', serie.id]);
   }
 }
