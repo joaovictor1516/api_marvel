@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MarvelService } from 'src/app/api/marvel.service'; 
 import { take } from 'rxjs';
-import { Comic, Character, Series } from 'src/app/interfaces/interfaces.component';
-import { Router } from '@angular/router';
+import { Comic, Character } from 'src/app/interfaces/interfaces.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-novel',
@@ -12,13 +12,14 @@ import { Router } from '@angular/router';
 
 export class NovelComponent implements OnInit{
   comic: Comic = {} as Comic;
+  novel: string = "";
   comicDados: Comic[] = [];
   comicHerois: Character[] = [];
 
-  constructor(private marvelService: MarvelService, private router: Router){}
+  constructor(private marvelService: MarvelService, private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(): void {
-      this.comic = this.marvelService.comicSelecionada;
+      this.comic.id = Number(this.route.snapshot.paramMap.get('id'));
 
       this.marvelService.getNovelsId(this.comic.id).pipe(take(1)).subscribe({
         next: (response: any) => {
@@ -42,5 +43,16 @@ export class NovelComponent implements OnInit{
   maisDetalhesPersonagem(personagem: Character){
     this.marvelService.personagemSelecionado = personagem;
     this.router.navigate(["/personagem"]);
+  }
+
+  pesquisarNovel(novel: string){
+    this.marvelService.getSearchNovels(novel).pipe(take(1)).subscribe({
+      next: (response: any) => {
+        this.comic = response.data.results;
+      },
+      error: (error: any) => {
+        console.error(error);
+      }
+    })
   }
 }

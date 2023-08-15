@@ -45,9 +45,9 @@ export class SeriesComponent implements OnInit{
     })
   }
 
-  maisDetalhes(serie: any){
+  maisDetalhes(serie: Series){
     this.marvelService.serieSelecionada = serie;
-    this.router.navigate(['/serie']);
+    this.router.navigate([`/serie`, serie.id]);
   }
 
   pesquisarSerie(serie: string){

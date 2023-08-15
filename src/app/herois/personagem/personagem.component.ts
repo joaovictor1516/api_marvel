@@ -1,6 +1,6 @@
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs';
 import { MarvelService } from 'src/app/api/marvel.service';
 import { Character, Comic, Series } from 'src/app/interfaces/interfaces.component';
@@ -17,10 +17,10 @@ export class PersonagemComponent implements OnInit{
   personagemVariacoes: Character[] = [];
   personagemSeries: Series[] = [];
   
-  constructor(private marvelService: MarvelService, private http: HttpClient, private router: Router){}
+  constructor(private marvelService: MarvelService, private http: HttpClient, private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(): void {
-    this.personagem = this.marvelService.personagemSelecionado;
+    this.personagem.id = Number(this.route.snapshot.paramMap.get('id'));
 
     this.marvelService.getCharactersId(this.personagem.id).pipe(take(1)).subscribe({
       next: (response: any) => {

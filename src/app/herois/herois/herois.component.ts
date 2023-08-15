@@ -26,7 +26,7 @@ export class HeroisComponent implements OnInit{
     });
   }
 
-  mostraDetalhes(personagem: any){
+  mostraDetalhes(personagem: Character){
     personagem.detalhes = true;
     if(personagem.description === ""){
       personagem.description = "Description is unndefined";
@@ -39,9 +39,9 @@ export class HeroisComponent implements OnInit{
     })
   }
 
-  maisDetalhes(personagem: any){
+  maisDetalhes(personagem: Character){
     this.marvelService.personagemSelecionado = personagem;
-    this.router.navigate(['/personagem']);
+    this.router.navigate(['/personagem', personagem.id]);
   }
 
   pesquisarHeroi(hero: string){

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs';
 import { MarvelService } from 'src/app/api/marvel.service';
 import { Character, Comic, Series } from 'src/app/interfaces/interfaces.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-serie',
@@ -11,13 +11,14 @@ import { Router } from '@angular/router';
 })
 export class SerieComponent implements OnInit {
   serie: Series = {} as Series;
+  serieModel: string = "";
   serieDados: Series[] = [];
   serieHerois: Character[] = [];
   serieComics: Comic[] = [];
-  constructor(private marvelService: MarvelService, private router: Router){}
+  constructor(private marvelService: MarvelService, private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(): void {
-      this.serie = this.marvelService.serieSelecionada;
+      this.serie.id = Number(this.route.snapshot.paramMap.get('id'));
       
       this.marvelService.getSeriesId(this.serie.id).pipe(take(1)).subscribe({
         next: (response: any) => {
@@ -74,4 +75,16 @@ maisDetalhesComic(comic: Comic){
   this.marvelService.comicSelecionada = comic;
   this.router.navigate(['/novel']);
 }
+
+pesquisarSerie(serie: string){
+  this.marvelService.getSearchSeries(serie).pipe(take(1)).subscribe({
+    next:(response: any)=>{
+      this.serie = response.data.results;
+    },
+    error: (error: any)=>{
+      console.error(error);
+    }
+  })
+}
+
 }

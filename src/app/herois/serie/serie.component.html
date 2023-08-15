@@ -1,5 +1,10 @@
 <header>
-    <app-navebar/>
+  <img src="../../../assets/marvelLogo.png" alt="Logo da Marvel" id="marvelLogo">
+  <app-navebar/>
+  <div class="buscador">
+      <input type="text" [(ngModel)]="serieModel">
+      <button (click)="pesquisarSerie(serieModel)">pesquisar</button>
+  </div>
 </header>
 
 <main>
@@ -9,6 +14,7 @@
 
       <img src="{{ serie.thumbnail.path }}/portrait_xlarge.{{ serie.thumbnail.extension }}" alt="{{ serie.title }}">
       <h3>{{ serie.title }}</h3>
+      <p>{{ serie.description }}</p>
       
       <div *ngIf="serie.temHerois; else serieSemHeroi">
         <h4>personagens:</h4>
@@ -21,7 +27,7 @@
       </div>
 
       <ng-template #serieSemHeroi>
-        <p>A serie nao contem personagens.</p>
+        <p>A serie não contem personagens.</p>
       </ng-template>
 
       <div *ngIf="serie.temComic; else serieSemComic">
