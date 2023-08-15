@@ -24,6 +24,7 @@ export class NovelComponent implements OnInit{
       this.marvelService.getNovelsId(this.comic.id).pipe(take(1)).subscribe({
         next: (response: any) => {
           this.comicDados = response.data.results;
+          console.log(this.comicDados)
         },
         error: (error: any) => {
           console.error(error);
@@ -42,7 +43,15 @@ export class NovelComponent implements OnInit{
 
   maisDetalhesPersonagem(personagem: Character){
     this.marvelService.personagemSelecionado = personagem;
-    this.router.navigate(["/personagem"]);
+    this.router.navigate(["/personagem", personagem.id]);
+  }
+
+  checaPersonagens(comic: Comic){
+    if(comic.characters.items.length > 0){
+      comic.temHerois = true;
+    } else{
+      comic.temHerois = false;
+    }
   }
 
   pesquisarNovel(novel: string){
