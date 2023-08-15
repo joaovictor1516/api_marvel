@@ -21,15 +21,15 @@ const routes: Routes = [
     component: SeriesComponent
   },
   {
-    path: 'personagem',
+    path: 'personagem/:id',
     component: PersonagemComponent
   },
   {
-    path: 'serie',
+    path: 'serie/:id',
     component: SerieComponent
   },
   {
-    path: 'novel',
+    path: 'novel/:id',
     component: NovelComponent
   }
 ];
