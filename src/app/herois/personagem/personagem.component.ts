@@ -69,6 +69,7 @@ export class PersonagemComponent implements OnInit{
   }
 
   getHeroByName(){
+    this.personagem = this.marvelService.personagemSelecionado;
     const posicao = this.personagem.name.indexOf("(");
     if(posicao !== -1){
       this.personagem.name = this.personagem.name.substring(0, posicao);
