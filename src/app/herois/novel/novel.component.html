@@ -29,5 +29,11 @@
         <ng-template #novelSemHeroi>
             <p>Não foi encontrado o personagem da novel.</p>
         </ng-template>
+
+        <div *ngFor="let comicsParecidas of comicVariacoes">
+            <img src="{{ comicsParecidas.thumbnail.path }}/portrait_medium.{{ comicsParecidas.thumbnail.extension }}" alt="{{ comicsParecidas.title }}">
+            <p>{{ comicsParecidas.title }}</p>
+            <p>teste</p>
+        </div>
     </div>
 </main>

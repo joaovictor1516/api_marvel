@@ -42,7 +42,7 @@ export class NovelsComponent implements OnInit{
   }
 
   maisDetalhes(novel: Comic){
-    this.marvelService.comicSelecionada = novel;
+    this.marvelService.setComicSelecionada(novel);
     this.router.navigate(['/novel', novel.id]);
   }
 

@@ -16,11 +16,13 @@ export class PersonagemComponent implements OnInit{
   personagemComics: Comic[] = [];
   personagemVariacoes: Character[] = [];
   personagemSeries: Series[] = [];
+  personagemSelecionado: Character = {} as Character;
   
   constructor(private marvelService: MarvelService, private http: HttpClient, private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(): void {
     this.personagem.id = Number(this.route.snapshot.paramMap.get('id'));
+    this.personagemSelecionado = this.marvelService.getPersonagemSelecionado();
 
     this.marvelService.getCharactersId(this.personagem.id).pipe(take(1)).subscribe({
       next: (response: any) => {
@@ -69,15 +71,13 @@ export class PersonagemComponent implements OnInit{
   }
 
   getHeroByName(){
-    this.personagem = this.marvelService.personagemSelecionado;
-    const posicao = this.personagem.name.indexOf("(");
+    const posicao = this.personagemSelecionado.name.indexOf("(");
     if(posicao !== -1){
-      this.personagem.name = this.personagem.name.substring(0, posicao);
-      console.log(this.personagem.name);
+      this.personagemSelecionado.name = this.personagemSelecionado.name.substring(0, posicao);
     } else{
       console.log(this.personagem.name);
     }
-    const url: string = `${this.marvelService.baseUrl}/characters?nameStartsWith=${this.personagem.name}&ts=${this.marvelService.timeStemp}&apikey=${this.marvelService.publicKey}&hash=${this.marvelService.hash}`;
+    const url: string = `${this.marvelService.baseUrl}/characters?nameStartsWith=${this.personagemSelecionado.name}&ts=${this.marvelService.timeStemp}&apikey=${this.marvelService.publicKey}&hash=${this.marvelService.hash}`;
 
     const headers = new HttpHeaders().set("Content-Type", "application/json");
 
@@ -85,17 +85,17 @@ export class PersonagemComponent implements OnInit{
   }
 
   mostraDetalhesHeroi(heroi: Character){
-    this.marvelService.personagemSelecionado = heroi;
-    this.router.navigate(['/personagem']);
+    this.marvelService.setPersonagemSelecionado(heroi);
+    this.router.navigate(['/personagem',heroi.id]);
   }
 
   mostraDetalhesNovel(novel: Comic){
-    this.marvelService.comicSelecionada = novel;
+    this.marvelService.setComicSelecionada(novel);
     this.router.navigate(['/novel', novel.id]);
   }
 
   mostraDetalhesSerie(serie: Series){
-    this.marvelService.serieSelecionada = serie;
+    this.marvelService.setSerieSelecionada(serie);
     this.router.navigate(['/serie', serie.id]);
   }
 }

@@ -9,9 +9,22 @@ import { Character, Series, Comic } from '../interfaces/interfaces.component';
 })
 
 export class MarvelService {
-  constructor(private http:HttpClient) {}
+  constructor(private http:HttpClient) {
+    const storedDataComic = localStorage.getItem(this.localStorageKeyComics);
+    const storedDataSerie = localStorage.getItem(this.localStorageKeySeries);
+    const storedDataPersonagem = localStorage.getItem(this.localStorageKeyCharacters);
+    if(storedDataComic){
+      this.comicSelecionada = JSON.parse(storedDataComic);
+    }
+    if(storedDataSerie){
+      this.serieSelecionada = JSON.parse(storedDataSerie);
+    }
+    if(storedDataPersonagem){
+      this.personagemSelecionado = JSON.parse(storedDataPersonagem);
+    }
+  }
   
-  privateKey: string = "b570d67d539a3e9943771eb40333e5b45537f077";
+ privateKey: string = "b570d67d539a3e9943771eb40333e5b45537f077";
   publicKey: string = "a7836e9b654b6019527d0921a05fb2dd";
   baseUrl:string = "https://gateway.marvel.com/v1/public";
   timeStemp:string = new Date().getTime().toString();
@@ -21,6 +34,9 @@ export class MarvelService {
   personagemSelecionado:Character = {} as Character;
   serieSelecionada:Series = {} as Series;
   comicSelecionada:Comic = {} as Comic;
+  private localStorageKeyComics: string = "comicSelecionada";
+  private localStorageKeyCharacters: string = "personagemSelecionado";
+  private localStorageKeySeries: string = "serieSelecionada";
   
   getCharacters(){
     const url:string = `${this.baseUrl}/characters${this.extensao}`;
@@ -148,6 +164,33 @@ export class MarvelService {
     const headers = new HttpHeaders().set("Content-Type", "application/json");
 
     return this.http.get(url, { headers });
+  }
+
+  getComicSelecionada(): Comic{
+    return this.comicSelecionada;
+  }
+
+  setComicSelecionada(comic: Comic){
+    this.comicSelecionada = comic;
+    localStorage.setItem(this.localStorageKeyComics, JSON.stringify(comic));
+  }
+
+  getSerieSelecionada(): Series{
+    return this.serieSelecionada;
+  }
+
+  setSerieSelecionada(serie: Series){
+    this.serieSelecionada = serie;
+    localStorage.setItem(this.localStorageKeySeries, JSON.stringify(serie));
+  }
+
+  getPersonagemSelecionado(): Character{
+    return this.personagemSelecionado;
+  }
+
+  setPersonagemSelecionado(personagem: Character){
+    this.personagemSelecionado = personagem;
+    localStorage.setItem(this.localStorageKeyCharacters, JSON.stringify(personagem));
   }
 
 }

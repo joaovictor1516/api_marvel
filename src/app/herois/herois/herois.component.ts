@@ -40,7 +40,7 @@ export class HeroisComponent implements OnInit{
   }
 
   maisDetalhes(personagem: Character){
-    this.marvelService.personagemSelecionado = personagem;
+    this.marvelService.setPersonagemSelecionado(personagem);
     this.router.navigate(['/personagem', personagem.id]);
   }
 
@@ -48,8 +48,6 @@ export class HeroisComponent implements OnInit{
     this.marvelService.getSearchCharacters(hero).pipe(take(1)).subscribe({
       next: (response: any) => {
         this.heros = response.data.results;
-        console.log(hero);
-        console.log(this.heros);
       },
       error: (error: any) => {
         console.error(error);
