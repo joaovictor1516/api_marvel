@@ -1,3 +1,9 @@
-div{
+div:not(.buscador){
     border: none;
+    width: 100%;
+}
+
+.conteudos div{
+    width: auto;
+    border: 2px solid black
 }
