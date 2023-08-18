@@ -54,6 +54,7 @@ export class SeriesComponent implements OnInit{
     this.marvelService.getSearchSeries(serie).pipe(take(1)).subscribe({
       next: (response: any) => {
         this.seriesHerois = response.data.results;
+        console.log(response.data.results);
       },
       error: (error: any) => {
         console.error(error);
