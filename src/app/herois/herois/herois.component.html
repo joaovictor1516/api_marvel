@@ -8,13 +8,15 @@
 </header>
 
 <main>
-    <div *ngFor="let herois of heros" (mouseenter)="mostraDetalhes(herois)" (mouseleave)="escondeDetalhes()">
-        <img src="{{ herois.thumbnail.path }}/portrait_xlarge.{{ herois.thumbnail.extension }}" alt="{{ herois.name }}">
-
-        <div *ngIf="herois.detalhes" class="detalhes">
-            <h3>{{ herois.name }}</h3>
-            <p>{{ herois.description }}</p>
-            <a (click)="maisDetalhes(herois)">Saber mais</a>
+    <!-- mudar o nome da classe -->
+    <div class="conteudos">
+        <div *ngFor="let herois of heros" (mouseenter)="mostraDetalhes(herois)" (mouseleave)="escondeDetalhes()">
+            <img src="{{ herois.thumbnail.path }}/portrait_xlarge.{{ herois.thumbnail.extension }}" alt="{{ herois.name }}">
+            <div *ngIf="herois.detalhes" class="detalhes">
+                <h3>{{ herois.name }}</h3>
+                <p>{{ herois.description }}</p>
+                <a (click)="maisDetalhes(herois)">Saber mais</a>
+            </div>
         </div>
     </div>
 </main>

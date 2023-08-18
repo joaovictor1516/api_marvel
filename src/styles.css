@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+app-root{
+    width: 1080px;
+}
+
 body{
     display: flex;
     flex-direction: column;
@@ -21,13 +25,13 @@ header{
 
 main{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
 }
 
-div:not(.detalhes,.buscador){
+div:not(.detalhes,.buscador,.conteudos){
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -83,6 +87,15 @@ input{
 .detalhes:hover img{
     width: 150px;
     height: 225px;
+}
+
+.conteudos{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: none;
 }
 
 #marvelLogo{
