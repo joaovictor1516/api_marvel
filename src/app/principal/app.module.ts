@@ -14,6 +14,7 @@ import { PersonagemComponent } from '../herois/personagem/personagem.component';
 import { SerieComponent } from '../herois/serie/serie.component';
 import { LimiteComponent } from '../limite/limite.component';
 import { NovelComponent } from '../herois/novel/novel.component';
+import { BuscaComponent } from '../busca/busca.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NovelComponent } from '../herois/novel/novel.component';
     PersonagemComponent,
     SerieComponent,
     LimiteComponent,
-    NovelComponent
+    NovelComponent,
+    BuscaComponent
   ],
   imports: [
     BrowserModule,
