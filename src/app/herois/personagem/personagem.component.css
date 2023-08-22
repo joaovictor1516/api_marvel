@@ -7,3 +7,8 @@ div:not(.buscador){
     width: auto;
     border: 2px solid black
 }
+
+.conteudos div:hover img{
+    width: 168px;
+    height: 252px;
+}
