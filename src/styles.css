@@ -68,7 +68,7 @@ footer main{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
 }
 
