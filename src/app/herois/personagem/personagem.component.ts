@@ -19,7 +19,6 @@ export class PersonagemComponent implements OnInit{
   personagemSelecionado: Character = {} as Character;
   personagemPesquisa: Character[] = [];
   heroiPesquisa: string = "";
-  pesquisado: boolean = false;
   
   constructor(private marvelService: MarvelService, private http: HttpClient, private router: Router, private route: ActivatedRoute){}
 
