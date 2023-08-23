@@ -5,18 +5,22 @@
 
 div{
     border: none;
+    align-items: inherit;
 }
 
 ul{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    flex-wrap: wrap;
+    height: 80px;
 }
 
 li{
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: 3px;
 }
 
 li a{
