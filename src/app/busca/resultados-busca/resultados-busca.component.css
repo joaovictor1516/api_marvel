@@ -1,0 +1,13 @@
+.elementos{
+    border: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    width: auto;
+}
+
+div:not(.elementos){
+    height: 361px;
+    
+}

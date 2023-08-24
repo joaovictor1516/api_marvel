@@ -1,25 +1,33 @@
-<p>Comics:</p>
-    <div *ngFor="let comics of pesquisaComics">
+<header>
+    <app-navebar></app-navebar>
+</header>
 
-        <img src="{{ comics.thumbnail.path }}/portrait_xlarge.{{ comics.thumbnail.extension }}" alt="{{ comics.title }}">
+<main>
+    <h3>Comics:</h3>
+        <div class="elementos">
+            <div *ngFor="let comics of pesquisaComics">
+                <img src="{{ comics.thumbnail.path }}/portrait_xlarge.{{ comics.thumbnail.extension }}" alt="{{ comics.title }}">
+                <h2>{{ comics.title }}</h2>
+            </div>
+        </div>
+    
+        <h3>Herois:</h3>
+        <div class="elementos">
+            <div *ngFor="let herois of pesquisaCharacter">
+                <img src="{{ herois.thumbnail.path }}/portrait_xlarge.{{ herois.thumbnail.extension }}" alt="{{ herois.name }}">
+                <h2>{{ herois.name }}</h2>
+            </div>
+        </div>
+    
+        <h3>Series:</h3>
+        <div class="elementos">
+            <div *ngFor="let series of pesquisaSerie">
+                <img src="{{ series.thumbnail.path }}/portrait_xlarge.{{ series.thumbnail.extension }}" alt="{{ series.title }}">
+                <h2>{{ series.title }}</h2>
+            </div>
+        </div>
+</main>
 
-        <h2>{{ comics.title }}</h2>
-
-    </div>
-
-    <p>Herois:</p>
-    <div *ngFor="let herois of pesquisaCharacter">
-
-        <img src="{{ herois.thumbnail.path }}/portrait_xlarge.{{ herois.thumbnail.extension }}" alt="{{ herois.name }}">
-
-        <h2>{{ herois.name }}</h2>
-    </div>
-
-    <p>Series:</p>
-    <div *ngFor="let series of pesquisaSerie">
-
-        <img src="{{ series.thumbnail.path }}/portrait_xlarge.{{ series.thumbnail.extension }}" alt="{{ series.title }}">
-
-        <h2>{{ series.title }}</h2>
-
-    </div>
+<footer>
+    <app-rodape></app-rodape>
+</footer>

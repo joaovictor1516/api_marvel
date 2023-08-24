@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs';
 import { MarvelService } from 'src/app/api/marvel.service';
 import { Comic, Character, Series } from 'src/app/interfaces/interfaces.component';
@@ -10,11 +10,18 @@ import { Comic, Character, Series } from 'src/app/interfaces/interfaces.componen
   styleUrls: ['./resultados-busca.component.css']
 })
 export class ResultadosBuscaComponent {
+  busca: string = "";
   pesquisaComics: Comic[] = [];
   pesquisaCharacter: Character[] = [];
   pesquisaSerie: Series[] = [];
 
-  constructor(private marvelService: MarvelService, private http: Router){}
+  constructor(private marvelService: MarvelService, private http: Router, private route: ActivatedRoute){
+    this.route.queryParams.subscribe((params) => {
+      this.busca = params['query'];
+    });
+
+    this.pesquisar(this.busca);
+  }
 
   pesquisar(pesquisa: string){
     this.marvelService.getSearchNovels(pesquisa).pipe(take(1)).subscribe({
