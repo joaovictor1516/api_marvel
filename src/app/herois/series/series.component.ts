@@ -12,7 +12,6 @@ import { Series } from 'src/app/interfaces/interfaces.component';
 
 export class SeriesComponent implements OnInit{
   seriesHerois: Series[] = [];
-  serie: string = "";
 
   constructor(private marvelService: MarvelService, private router: Router){}
 
@@ -48,17 +47,5 @@ export class SeriesComponent implements OnInit{
   maisDetalhes(serie: Series){
     this.marvelService.serieSelecionada = serie;
     this.router.navigate([`/serie`, serie.id]);
-  }
-
-  pesquisarSerie(serie: string){
-    this.marvelService.getSearchSeries(serie).pipe(take(1)).subscribe({
-      next: (response: any) => {
-        this.seriesHerois = response.data.results;
-        console.log(response.data.results);
-      },
-      error: (error: any) => {
-        console.error(error);
-      }
-    })
   }
 }

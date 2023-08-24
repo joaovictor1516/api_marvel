@@ -11,7 +11,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SerieComponent implements OnInit {
   serie: Series = {} as Series;
-  serieModel: string = "";
   serieDados: Series[] = [];
   serieHerois: Character[] = [];
   serieComics: Comic[] = [];
@@ -66,25 +65,13 @@ export class SerieComponent implements OnInit {
     }
   }
 
-maisDetalhesPersonagem(personagem: Character){
-  this.marvelService.personagemSelecionado = personagem;
-  this.router.navigate(["/personagem"]);
-}
+  maisDetalhesPersonagem(personagem: Character){
+    this.marvelService.personagemSelecionado = personagem;
+    this.router.navigate(["/personagem"]);
+  }
 
-maisDetalhesComic(comic: Comic){
-  this.marvelService.comicSelecionada = comic;
-  this.router.navigate(['/novel']);
-}
-
-pesquisarSerie(serie: string){
-  this.marvelService.getSearchSeries(serie).pipe(take(1)).subscribe({
-    next:(response: any)=>{
-      this.serie = response.data.results;
-    },
-    error: (error: any)=>{
-      console.error(error);
-    }
-  })
-}
-
+  maisDetalhesComic(comic: Comic){
+    this.marvelService.comicSelecionada = comic;
+    this.router.navigate(['/novel']);
+  }
 }

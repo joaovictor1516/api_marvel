@@ -18,7 +18,6 @@ export class PersonagemComponent implements OnInit{
   personagemSeries: Series[] = [];
   personagemSelecionado: Character = {} as Character;
   personagemPesquisa: Character[] = [];
-  heroiPesquisa: string = "";
   
   constructor(private marvelService: MarvelService, private http: HttpClient, private router: Router, private route: ActivatedRoute){}
 
@@ -98,16 +97,5 @@ export class PersonagemComponent implements OnInit{
   mostraDetalhesSerie(serie: Series){
     this.marvelService.setSerieSelecionada(serie);
     this.router.navigate(['/serie', serie.id]);
-  }
-
-  pesquisarPersonagem(personagem: string){
-    this.marvelService.getSearchCharacters(personagem).pipe(take(1)).subscribe({
-      next: (response: any) => {
-        this.personagemDados = response.data.results;
-      },
-      error: (error: any) => {
-        console.error(error);
-      }
-    })
   }
 }

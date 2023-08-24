@@ -11,7 +11,6 @@ import { Character } from 'src/app/interfaces/interfaces.component';
 })
 export class HeroisComponent implements OnInit{
   heros: Character[] = [];
-  hero: string = "";
 
   constructor(private marvelService: MarvelService, private router: Router){}
 
@@ -42,16 +41,5 @@ export class HeroisComponent implements OnInit{
   maisDetalhes(personagem: Character){
     this.marvelService.setPersonagemSelecionado(personagem);
     this.router.navigate(['/personagem', personagem.id]);
-  }
-
-  pesquisarHeroi(hero: string){
-    this.marvelService.getSearchCharacters(hero).pipe(take(1)).subscribe({
-      next: (response: any) => {
-        this.heros = response.data.results;
-      },
-      error: (error: any) => {
-        console.error(error);
-      }
-    })
   }
 }

@@ -14,7 +14,6 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 export class NovelComponent implements OnInit{
   comic: Comic = {} as Comic;
   comicRecebida: Comic = {} as Comic;
-  novel: string = "";
   comicDados: Comic[] = [];
   comicHerois: Character[] = [];
   comicVariacoes: Comic[] = [];
@@ -66,17 +65,6 @@ export class NovelComponent implements OnInit{
     } else{
       comic.temHerois = false;
     }
-  }
-
-  pesquisarNovel(novel: string){
-    this.marvelService.getSearchNovels(novel).pipe(take(1)).subscribe({
-      next: (response: any) => {
-        this.comic = response.data.results;
-      },
-      error: (error: any) => {
-        console.error(error);
-      }
-    })
   }
 
   getNovelsByName(comic: Comic){

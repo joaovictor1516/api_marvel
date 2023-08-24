@@ -11,7 +11,6 @@ import { Comic } from 'src/app/interfaces/interfaces.component';
 })
 export class NovelsComponent implements OnInit{
   novels:Comic[] = [];
-  novel:string = "";
 
   constructor(private marvelService: MarvelService, private router: Router){}
 
@@ -44,16 +43,5 @@ export class NovelsComponent implements OnInit{
   maisDetalhes(novel: Comic){
     this.marvelService.setComicSelecionada(novel);
     this.router.navigate(['/novel', novel.id]);
-  }
-
-  pesquisarNovel(novel: string){
-    this.marvelService.getSearchNovels(novel).pipe(take(1)).subscribe({
-      next: (response: any) => {
-        this.novels = response.data.results;
-      },
-      error: (error: any) => {
-        console.error(error);
-      }
-    })
   }
 }
