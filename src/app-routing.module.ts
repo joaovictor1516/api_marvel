@@ -6,6 +6,7 @@ import { SeriesComponent } from './app/herois/series/series.component';
 import { PersonagemComponent } from './app/herois/personagem/personagem.component';
 import { SerieComponent } from './app/herois/serie/serie.component';
 import { NovelComponent } from './app/herois/novel/novel.component';
+import { ResultadosBuscaComponent } from './app/busca/resultados-busca/resultados-busca.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'novel/:id',
     component: NovelComponent
+  },
+  {
+    path: 'pesquisa',
+    component: ResultadosBuscaComponent
   }
 ];
 
