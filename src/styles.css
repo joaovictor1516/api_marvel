@@ -33,6 +33,7 @@ div:not(.detalhes,.buscador,.conteudos){
     padding: 5px;
     margin: 5px;
     width: 225px;
+    height: 333.5px;
     border: 2px solid #414141;
     border-radius: 5px;
 }

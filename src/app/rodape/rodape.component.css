@@ -6,6 +6,7 @@
 div{
     border: none;
     align-items: inherit;
+    height: auto;
 }
 
 ul{
