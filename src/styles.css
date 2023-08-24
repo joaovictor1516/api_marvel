@@ -15,14 +15,6 @@ body{
     justify-content: center;
 }
 
-header{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-}
-
 main{
     display: flex;
     flex-direction: column;
