@@ -34,10 +34,8 @@ export class NovelsComponent implements OnInit{
     }
   }
 
-  escondeDetalhes(){
-    this.novels.forEach((novel) => {
+  escondeDetalhes(novel: Comic){
       novel.detalhes = false;
-    })
   }
 
   maisDetalhes(novel: Comic){

@@ -32,10 +32,8 @@ export class HeroisComponent implements OnInit{
     }
   }
 
-  escondeDetalhes(){
-    this.heros.forEach((herois) => {
+  escondeDetalhes(herois: Character){
       herois.detalhes = false;
-    })
   }
 
   maisDetalhes(personagem: Character){

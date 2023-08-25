@@ -4,24 +4,10 @@
 
 <main>
     <div class="conteudos">
-        <div *ngFor="let revistinhas of novels" (mouseenter)="mostraDetalhes(revistinhas)" (mouseleave)="escondeDetalhes()">
+        <div *ngFor="let revistinhas of novels" (mouseenter)="mostraDetalhes(revistinhas)" (mouseleave)="escondeDetalhes(revistinhas)" (click)="maisDetalhes(revistinhas)">
             <img src="{{ revistinhas.thumbnail.path}}/portrait_xlarge.{{ revistinhas.thumbnail.extension }}" alt="novels">
             <div *ngIf="revistinhas.detalhes;" class="detalhes">
                 <h3>{{ revistinhas.title }}</h3>
-                <div *ngIf="revistinhas.temHerois; else semPersonagens" class="detalhes">
-                    <h4>Personagens:</h4>
-                    <!-- mudar a class depois -->
-                    <div *ngFor="let personagem of revistinhas.characters.items | limit: 3" class="detalhes">
-                    <h4>
-                        {{ personagem.name }}
-                    </h4>
-                    </div>
-                </div>
-                <!-- mudar a class depois -->
-                <ng-template #semPersonagens class="detalhes">
-                    <p>Não foram encotrados os personagens desta novel</p>
-                </ng-template>
-                <a (click)="maisDetalhes(revistinhas)">Mais detalhes</a>
             </div>
         </div>
     </div>

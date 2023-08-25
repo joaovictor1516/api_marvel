@@ -29,19 +29,10 @@ export class SeriesComponent implements OnInit{
 
   mostraDetalhes(series: Series){
     series.detalhes = true;
-    this.seriesHerois.forEach((element: Series) => {
-      if(element.comics.items.length >= 1){
-        element.temComic = true;
-      } else{
-        element.temComic = false;
-      }
-    })
   }
 
-  escondeDetalhes(){
-    this.seriesHerois.forEach((element: Series) => {
-      element.detalhes = false;
-    })
+  escondeDetalhes(series: Series){
+    series.detalhes = false;
   }
 
   maisDetalhes(serie: Series){
