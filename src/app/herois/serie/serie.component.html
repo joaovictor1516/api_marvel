@@ -12,33 +12,35 @@
     <h3>{{ serie.title }}</h3>
     <p>{{ serie.description }}</p>
     
-    <div *ngIf="serie.temHerois; else serieSemHeroi">
-      <h4>personagens:</h4>
-      <div *ngFor="let personagem of serieHerois">
-        <img src="{{ personagem.thumbnail.path }}/portrait_medium.{{ personagem.thumbnail.extension }}" alt="personagem.name">
-
-        <h5>{{ personagem.name }}</h5>
-        <a (click)="maisDetalhesPersonagem(personagem)">Ver mais</a>
+    <section>
+      <div *ngIf="serie.temHerois; else serieSemHeroi">
+        <h4>personagens:</h4>
+        <div *ngFor="let personagem of serieHerois">
+          <img src="{{ personagem.thumbnail.path }}/portrait_medium.{{ personagem.thumbnail.extension }}" alt="personagem.name">
+          <h5>{{ personagem.name }}</h5>
+          <a (click)="maisDetalhesPersonagem(personagem)">Ver mais</a>
+        </div>
       </div>
-    </div>
+    
 
-    <ng-template #serieSemHeroi>
-      <p>A série não contem personagens.</p>
-    </ng-template>
+      <ng-template #serieSemHeroi>
+        <p>A série não contem personagens.</p>
+      </ng-template>
+    </section>
 
-    <div *ngIf="serie.temComic; else serieSemComic">
-      <h4>comics:</h4>
-      <div *ngFor="let comic of serieComics">
-        <img src="{{ comic.thumbnail.path }}/portrait_medium.{{ comic.thumbnail.extension }}" alt="{{ comic.title }}">
-
-        <h5>{{ comic.title }}</h5>
-        <a (click)="maisDetalhesComic(comic)">Ver mais</a>
+    <section>
+      <div *ngIf="serie.temComic; else serieSemComic">
+        <h4>comics:</h4>
+        <div *ngFor="let comic of serieComics">
+          <img src="{{ comic.thumbnail.path }}/portrait_medium.{{ comic.thumbnail.extension }}" alt="{{ comic.title }}">
+          <h5>{{ comic.title }}</h5>
+          <a (click)="maisDetalhesComic(comic)">Ver mais</a>
+        </div>
       </div>
-    </div>
-
-    <ng-template #serieSemComic>
-      <p>A série não contem comics</p>
-    </ng-template>
+      <ng-template #serieSemComic>
+        <p>A série não contem comics</p>
+      </ng-template>
+    </section>
   </div>
 </main>
 

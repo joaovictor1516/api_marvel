@@ -3,43 +3,49 @@
 </header>
 
 <main>
-    <div *ngFor="let heroi of personagemDados">
-        <img src="{{ heroi.thumbnail.path }}/portrait_xlarge.{{ heroi.thumbnail.extension }}" alt="{{ heroi.name }}">
-
-        <h3> {{ heroi.name }} </h3>
-
-        <p (load)="descricaoHeroi(heroi)">
-            {{heroi.description}}
-        </p>
-    </div>
-
-    <h4>Comics:</h4>
-    <div class="conteudos">
-        <div *ngFor="let comics of personagemComics">
-            <img src="{{ comics.thumbnail.path }}/portrait_medium.{{ comics.thumbnail.extension }}" alt="{{ comics.title }}">
-            <h5>{{ comics.title }}</h5>
-            <a (click)="mostraDetalhesNovel(comics)">Mais detalhes</a>
+    <section>
+        <div *ngFor="let heroi of personagemDados">
+            <img src="{{ heroi.thumbnail.path }}/portrait_xlarge.{{ heroi.thumbnail.extension }}" alt="{{ heroi.name }}">
+            <h3> {{ heroi.name }} </h3>
+            <p (load)="descricaoHeroi(heroi)">
+                {{heroi.description}}
+            </p>
         </div>
-    </div>
+    </section>
 
-    <h4>Series:</h4>
-    <div class="conteudos">
-        <div *ngFor="let series of personagemSeries">
-            <img src="{{ series.thumbnail.path }}/portrait_medium.{{ series.thumbnail.extension }}" alt="{{ series.title }}">
-            <h5>{{ series.title }}</h5>
-            <a (click)="mostraDetalhesSerie(series)"> Mais detalhes</a>
+    <section>
+        <h4>Comics:</h4>
+        <div class="conteudos">
+            <div *ngFor="let comics of personagemComics">
+                <img src="{{ comics.thumbnail.path }}/portrait_medium.{{ comics.thumbnail.extension }}" alt="{{ comics.title }}">
+                <h5>{{ comics.title }}</h5>
+                <a (click)="mostraDetalhesNovel(comics)">Mais detalhes</a>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <h4>Variações do Personagem:</h4>
-    <div class="conteudos">
-        <div *ngFor="let semelhantes of personagemVariacoes">
-            <img src="{{ semelhantes.thumbnail.path }}/portrait_medium.{{ semelhantes.thumbnail.extension }}" alt="{{ semelhantes.name }}">
-            <h5>{{ semelhantes.name }}</h5>
+    <section>
+        <h4>Series:</h4>
+        <div class="conteudos">
+            <div *ngFor="let series of personagemSeries">
+                <img src="{{ series.thumbnail.path }}/portrait_medium.{{ series.thumbnail.extension }}" alt="{{ series.title }}">
+                <h5>{{ series.title }}</h5>
+                <a (click)="mostraDetalhesSerie(series)"> Mais detalhes</a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h4>Variações do Personagem:</h4>
+        <div class="conteudos">
+            <div *ngFor="let semelhantes of personagemVariacoes">
+                <img src="{{ semelhantes.thumbnail.path }}/portrait_medium.{{ semelhantes.thumbnail.extension }}" alt="{{ semelhantes.name }}">
+                <h5>{{ semelhantes.name }}</h5>
         
-            <a (click)="mostraDetalhesHeroi(semelhantes)">Mais detalhes</a>
+                <a (click)="mostraDetalhesHeroi(semelhantes)">Mais detalhes</a>
+            </div>
         </div>
-    </div>
+    </section>
 </main>
 
 <footer>

@@ -3,7 +3,6 @@
 </header>
 
 <main>
-    <!-- mudar o nome da classe -->
     <div class="conteudos">
         <div *ngFor="let herois of heros" (mouseenter)="mostraDetalhes(herois)" (mouseleave)="escondeDetalhes(herois)" (click)="maisDetalhes(herois)">
             <img src="{{ herois.thumbnail.path }}/portrait_xlarge.{{ herois.thumbnail.extension }}" alt="{{ herois.name }}">
