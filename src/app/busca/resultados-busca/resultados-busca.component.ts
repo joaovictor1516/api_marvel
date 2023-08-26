@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs';
 import { MarvelService } from 'src/app/api/marvel.service';
@@ -9,7 +9,7 @@ import { Comic, Character, Series } from 'src/app/interfaces/interfaces.componen
   templateUrl: './resultados-busca.component.html',
   styleUrls: ['./resultados-busca.component.css']
 })
-export class ResultadosBuscaComponent {
+export class ResultadosBuscaComponent implements OnInit{
   busca: string = "";
   pesquisaComics: Comic[] = [];
   pesquisaCharacter: Character[] = [];
@@ -19,8 +19,10 @@ export class ResultadosBuscaComponent {
     this.route.queryParams.subscribe((params) => {
       this.busca = params['query'];
     });
+  }
 
-    this.pesquisar(this.busca);
+  ngOnInit(): void {
+      this.pesquisar(this.busca);
   }
 
   pesquisar(pesquisa: string){
@@ -53,4 +55,29 @@ export class ResultadosBuscaComponent {
     });
   }
 
+  mostraDetalhes(item: Character | Comic | Series){
+    item.detalhes = true;
+    if(item.description === ""){
+      item.description = "Description is unndefined";
+    }
+  }
+
+  escondeDetalhes(item: Character | Comic | Series){
+    item.detalhes = false;
+  }
+
+  maisDetalhesPersonagem(heroi: Character){
+    this.marvelService.setPersonagemSelecionado(heroi);
+    this.http.navigate(['/personagem', heroi.id]);
+  }
+
+  maisDetalhesComics(comic: Comic){
+    this.marvelService.setComicSelecionada(comic);
+    this.http.navigate(['/novel', comic.id]);
+  }
+
+  maisDetalhesSeries(serie: Series){
+    this.marvelService.setSerieSelecionada(serie);
+    this.http.navigate(['/serie', serie.id]);
+  }
 }

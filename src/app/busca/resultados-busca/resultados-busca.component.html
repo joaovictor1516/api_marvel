@@ -3,29 +3,44 @@
 </header>
 
 <main>
-    <h3>Comics:</h3>
-        <div class="elementos">
-            <div *ngFor="let comics of pesquisaComics">
-                <img src="{{ comics.thumbnail.path }}/portrait_xlarge.{{ comics.thumbnail.extension }}" alt="{{ comics.title }}">
-                <h2>{{ comics.title }}</h2>
-            </div>
-        </div>
-    
+    <section>
         <h3>Herois:</h3>
         <div class="elementos">
-            <div *ngFor="let herois of pesquisaCharacter">
+            <div *ngFor="let herois of pesquisaCharacter" (mouseenter)="mostraDetalhes(herois)" (mouseleave)="escondeDetalhes(herois)" (click)="maisDetalhesPersonagem(herois)">
                 <img src="{{ herois.thumbnail.path }}/portrait_xlarge.{{ herois.thumbnail.extension }}" alt="{{ herois.name }}">
-                <h2>{{ herois.name }}</h2>
+        
+                <div *ngIf="herois.detalhes" class="detalhes">
+                    <h2>{{ herois.name }}</h2>
+                </div>
             </div>
         </div>
+    </section>
+
+    <section>
+        <h3>Comics:</h3>
+            <div class="elementos">
+                <div *ngFor="let comics of pesquisaComics" (mouseenter)="mostraDetalhes(comics)" (mouseleave)="escondeDetalhes(comics)" (click)="maisDetalhesComics(comics)">
+                    <img src="{{ comics.thumbnail.path }}/portrait_xlarge.{{ comics.thumbnail.extension }}" alt="{{ comics.title }}">
+        
+                    <div *ngIf="comics.detalhes" class="detalhes">
+                        <h2>{{ comics.title }}</h2>
+                    </div>
+                </div>
+            </div>
+    </section>
     
+    <section>
         <h3>Series:</h3>
-        <div class="elementos">
-            <div *ngFor="let series of pesquisaSerie">
-                <img src="{{ series.thumbnail.path }}/portrait_xlarge.{{ series.thumbnail.extension }}" alt="{{ series.title }}">
-                <h2>{{ series.title }}</h2>
+            <div class="elementos">
+                <div *ngFor="let series of pesquisaSerie" (mouseenter)="mostraDetalhes(series)" (mouseleave)="escondeDetalhes(series)" (click)="maisDetalhesSeries(series)">
+                    <img src="{{ series.thumbnail.path }}/portrait_xlarge.{{ series.thumbnail.extension }}" alt="{{ series.title }}">
+        
+                    <div *ngIf="series.detalhes" class="detalhes">
+                        <h2>{{ series.title }}</h2>
+                    </div>
+                </div>
             </div>
-        </div>
+    </section>
 </main>
 
 <footer>

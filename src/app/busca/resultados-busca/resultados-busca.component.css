@@ -1,3 +1,7 @@
+main{
+    height: auto;
+}
+
 .elementos{
     border: none;
     display: flex;
@@ -5,9 +9,5 @@
     flex-wrap: wrap;
     align-items: center;
     width: auto;
-}
-
-div:not(.elementos){
-    height: 361px;
-    
+    height: auto;
 }
