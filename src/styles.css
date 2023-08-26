@@ -4,7 +4,7 @@
 }
 
 app-root{
-    width: 1080px;
+    width: 100%;
 }
 
 body{
@@ -32,8 +32,6 @@ div:not(.detalhes,.buscador,.conteudos){
     word-wrap: break-word;
     padding: 5px;
     margin: 5px;
-    width: 225px;
-    height: 333.5px;
     border: 2px solid #414141;
     border-radius: 5px;
 }
@@ -62,8 +60,16 @@ footer main{
     flex-direction: row;
     flex-wrap: wrap;
     align-items: baseline;
+    align-content: flex-end;
     justify-content: space-evenly;
-    height: 125px;
+    height: 100%;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .detalhes{
@@ -71,15 +77,17 @@ footer main{
     flex-direction:column;
     justify-content:center;
     flex-wrap: wrap;
+    align-items: center;
     margin: 5px 0;
 }
 
-.detalhes p{
+.detalhes p, h2{
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow : hidden;
     text-overflow: ellipsis;
+    width: 150px
 }
 
 .detalhes img{
