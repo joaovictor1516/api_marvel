@@ -21,6 +21,8 @@ main{
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
+    color: #2b2a2a;
+    background-color: #eC151e;
 }
 
 div:not(.detalhes,.buscador,.conteudos){
@@ -32,7 +34,6 @@ div:not(.detalhes,.buscador,.conteudos){
     word-wrap: break-word;
     padding: 5px;
     margin: 5px;
-    border: 2px solid #414141;
     border-radius: 5px;
 }
 
@@ -47,7 +48,7 @@ a{
 }
 
 a:hover{
-    text-decoration: underline #ff6464;
+    text-decoration: underline #eC151e;
 }
 
 input{
@@ -55,7 +56,6 @@ input{
 }
 
 footer main{
-    background-color: #3c3b3b43;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -65,19 +65,24 @@ footer main{
     height: 100%;
 }
 
+footer main, header main{
+    background-color: #fff;
+}
+
 section{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
+    margin: 5px 0;
 }
 
 .detalhes{
     display:flex;
     flex-direction:column;
     justify-content:center;
-    flex-wrap: wrap;
     align-items: center;
+    flex-wrap: wrap;
     margin: 5px 0;
 }
 
@@ -87,7 +92,8 @@ section{
     -webkit-box-orient: vertical;
     overflow : hidden;
     text-overflow: ellipsis;
-    width: 150px
+    width: 150px;
+    margin: 3px 0;
 }
 
 .detalhes img{
@@ -100,13 +106,16 @@ section{
     height: 225px;
 }
 
+.detalhes:hover{
+    cursor: pointer;
+}
+
 .conteudos{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    border: none;
 }
 
 #marvelLogo{
