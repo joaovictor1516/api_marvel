@@ -15,9 +15,11 @@ ul{
 
 ul a{
     text-decoration: none;
+    cursor: pointer;
     color: #424242;
+    
 }
 
 ul a:hover{
-    text-decoration: underline #ff6464;
+    text-decoration: underline #eC151e;
 }

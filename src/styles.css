@@ -43,18 +43,6 @@ img{
     height: 225px;
 }
 
-a{
-    cursor: pointer;
-}
-
-a:hover{
-    text-decoration: underline #eC151e;
-}
-
-input{
-    width: 150px;
-}
-
 footer main{
     display: flex;
     flex-direction: row;
