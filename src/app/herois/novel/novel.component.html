@@ -15,10 +15,11 @@
             <div *ngIf="novel.temHerois; else novelSemHeroi">
                 <h4>Personagens da novel:</h4>
             
-                <div *ngFor="let personagens of comicHerois" class="detalhes">
-                    <img src="{{ personagens.thumbnail.path }}/portrait_medium.{{ personagens.thumbnail.extension }}" alt="{{ personagens.name }}">
-                    <h5>{{ personagens.name }}</h5>
-                    <a (click)="maisDetalhesPersonagem(personagens)">Ver mais</a>
+                <div class="conteudos">
+                    <div *ngFor="let personagens of comicHerois" (click)="maisDetalhesPersonagem(personagens)" class="detalhes">
+                        <img src="{{ personagens.thumbnail.path }}/portrait_medium.{{ personagens.thumbnail.extension }}" alt="{{ personagens.name }}">
+                        <h5>{{ personagens.name }}</h5>
+                    </div>
                 </div>
             </div>
 
@@ -28,9 +29,13 @@
         </section>
 
         <section>
-            <div *ngFor="let comicsParecidas of comicVariacoes">
-                <img src="{{ comicsParecidas.thumbnail.path }}/portrait_medium.{{ comicsParecidas.thumbnail.extension }}" alt="{{ comicsParecidas.title }}">
-                <p>{{ comicsParecidas.title }}</p>
+            <h4>Variações da novel:</h4>
+
+            <div class="conteudos">
+                <div *ngFor="let comicsParecidas of comicVariacoes" class="detalhes">
+                    <img src="{{ comicsParecidas.thumbnail.path }}/portrait_medium.{{ comicsParecidas.thumbnail.extension }}" alt="{{ comicsParecidas.title }}">
+                    <p>{{ comicsParecidas.title }}</p>
+                </div>
             </div>
         </section>
     </div>

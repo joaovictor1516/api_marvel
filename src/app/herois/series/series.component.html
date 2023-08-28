@@ -4,11 +4,11 @@
 
 <main>
     <div class="conteudos">
-        <div *ngFor="let series of seriesHerois" (mouseenter)="mostraDetalhes(series)" (mouseleave)="escondeDetalhes(series)" (click)="maisDetalhes(series)">
-            <img src="{{ series.thumbnail.path }}/portrait_xlarge.jpg" alt="{{ series.title }}" >
+        <div *ngFor="let series of seriesHerois" (mouseenter)="mostraDetalhes(series)" (mouseleave)="escondeDetalhes(series)" (click)="maisDetalhes(series)"  class="detalhes">
+            <img src="{{ series.thumbnail.path }}/portrait_xlarge.{{ series.thumbnail.extension }}" alt="{{ series.title }}" >
         
-            <div *ngIf="series.detalhes" class="detalhes">
-                <h3>{{ series.title }}</h3>
+            <div *ngIf="series.detalhes">
+                <h2>{{ series.title }}</h2>
             </div>
         </div>
     </div>

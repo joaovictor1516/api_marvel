@@ -4,10 +4,10 @@
 
 <main>
     <div class="conteudos">
-        <div *ngFor="let revistinhas of novels" (mouseenter)="mostraDetalhes(revistinhas)" (mouseleave)="escondeDetalhes(revistinhas)" (click)="maisDetalhes(revistinhas)">
+        <div *ngFor="let revistinhas of novels" (mouseenter)="mostraDetalhes(revistinhas)" (mouseleave)="escondeDetalhes(revistinhas)" (click)="maisDetalhes(revistinhas)"  class="detalhes">
             <img src="{{ revistinhas.thumbnail.path}}/portrait_xlarge.{{ revistinhas.thumbnail.extension }}" alt="novels">
-            <div *ngIf="revistinhas.detalhes;" class="detalhes">
-                <h3>{{ revistinhas.title }}</h3>
+            <div *ngIf="revistinhas.detalhes;">
+                <h2>{{ revistinhas.title }}</h2>
             </div>
         </div>
     </div>
