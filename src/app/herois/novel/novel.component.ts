@@ -55,7 +55,7 @@ export class NovelComponent implements OnInit{
   }
 
   maisDetalhesPersonagem(personagem: Character){
-    this.marvelService.personagemSelecionado = personagem;
+    this.marvelService.setPersonagemSelecionado(personagem);
     this.router.navigate(["/personagem", personagem.id]);
   }
 

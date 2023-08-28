@@ -66,12 +66,12 @@ export class SerieComponent implements OnInit {
   }
 
   maisDetalhesPersonagem(personagem: Character){
-    this.marvelService.personagemSelecionado = personagem;
-    this.router.navigate(["/personagem"]);
+    this.marvelService.setPersonagemSelecionado(personagem);
+    this.router.navigate(["/personagem", personagem.id]);
   }
 
   maisDetalhesComic(comic: Comic){
-    this.marvelService.comicSelecionada = comic;
-    this.router.navigate(['/novel']);
+    this.marvelService.setComicSelecionada(comic);
+    this.router.navigate(['/novel', comic.id]);
   }
 }
