@@ -5,11 +5,16 @@
 <main>
     <div *ngFor="let novel of comicDados">
         {{ checaPersonagens(novel) }}
-        <img src="{{ novel.thumbnail.path }}/portrait_xlarge.{{ novel.thumbnail.extension }}" alt="{{ novel.title }}">
-
-        <h3>{{ novel.title }}</h3>
-
-        <p>{{ novel.description }}</p>
+        <section  class="principal">
+            <img src="{{ novel.thumbnail.path }}/portrait_uncanny.{{ novel.thumbnail.extension }}" alt="{{ novel.title }}" class="imagemPrincipal">
+            <div>
+                <h3>{{ novel.title }}</h3>
+                <p>{{ novel.description }}</p>
+                <div *ngFor="let novelUrl of novel.urls">
+                    <a href="{{ novelUrl.url }}" target="_blank">Link da obra no site da marvel</a>
+                </div>
+            </div>
+        </section>
 
         <section>
             <div *ngIf="novel.temHerois; else novelSemHeroi">
@@ -17,7 +22,7 @@
             
                 <div class="conteudos">
                     <div *ngFor="let personagens of comicHerois" (click)="maisDetalhesPersonagem(personagens)" class="detalhes">
-                        <img src="{{ personagens.thumbnail.path }}/portrait_medium.{{ personagens.thumbnail.extension }}" alt="{{ personagens.name }}">
+                        <img src="{{ personagens.thumbnail.path }}/portrait_fantastic.{{ personagens.thumbnail.extension }}" alt="{{ personagens.name }}">
                         <h5>{{ personagens.name }}</h5>
                     </div>
                 </div>
@@ -29,12 +34,30 @@
         </section>
 
         <section>
-            <h4>Variações da novel:</h4>
+            <div *ngIf="novel.temSeries; else novelSemSerie">
+                <h4>Series que a novel participa:</h4>
+            
+                <div class="conteudos">
+                    <div *ngFor="let series of comicSeries" (click)="maisDetalhesSerie(series)" class="detalhes">
+                        <img src="{{ series.thumbnail.path }}/portrait_fantastic.{{ series.thumbnail.extension }}" alt="{{ series.title }}">
+                        <h5>{{ series }}</h5>
+                    </div>
+                </div>
+            </div>
 
-            <div class="conteudos">
-                <div *ngFor="let comicsParecidas of comicVariacoes" class="detalhes">
-                    <img src="{{ comicsParecidas.thumbnail.path }}/portrait_medium.{{ comicsParecidas.thumbnail.extension }}" alt="{{ comicsParecidas.title }}">
-                    <p>{{ comicsParecidas.title }}</p>
+            <ng-template #novelSemSerie>
+                <p>Não foi encontrada alguma série que a novel faça parte.</p>
+            </ng-template>
+        </section>
+
+        <section>
+            <div >
+                <h4>Variações da novel:</h4>
+                <div class="conteudos">
+                    <div *ngFor="let comicsParecidas of comicVariacoes" class="detalhes">
+                        <img src="{{ comicsParecidas.thumbnail.path }}/portrait_fantastic.{{ comicsParecidas.thumbnail.extension }}" alt="{{ comicsParecidas.title }}">
+                        <p>{{ comicsParecidas.title }}</p>
+                    </div>
                 </div>
             </div>
         </section>

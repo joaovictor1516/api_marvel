@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MarvelService } from 'src/app/api/marvel.service'; 
 import { take } from 'rxjs';
-import { Comic, Character } from 'src/app/interfaces/interfaces.component';
+import { Comic, Character, Series } from 'src/app/interfaces/interfaces.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 
@@ -17,6 +17,7 @@ export class NovelComponent implements OnInit{
   comicDados: Comic[] = [];
   comicHerois: Character[] = [];
   comicVariacoes: Comic[] = [];
+  comicSeries: Series[] = [];
 
   constructor(private marvelService: MarvelService, private router: Router, private route: ActivatedRoute, private http: HttpClient){}
 
@@ -64,6 +65,19 @@ export class NovelComponent implements OnInit{
       comic.temHerois = true;
     } else{
       comic.temHerois = false;
+    }
+  }
+
+  maisDetalhesSerie(serie: Series){
+    this.marvelService.setSerieSelecionada(serie);
+    this.router.navigate(["/serie", serie.id]);
+  }
+
+  checaSeries(comic: Comic){
+    if(Object.keys(comic.series).length> 0){
+      comic.temSeries = true;
+    } else{
+      comic.temSeries = false;
     }
   }
 
