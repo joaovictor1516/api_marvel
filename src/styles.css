@@ -39,8 +39,8 @@ div:not(.buscador,.conteudos,.principal){
 
 img{
     border-radius: 5px;
-    width: 150px;
-    height: 225px;
+    width: 168px;
+    height: 252px;
 }
 
 footer main{
@@ -91,11 +91,6 @@ a:hover{
     text-overflow: ellipsis;
     width: 150px;
     margin: 3px 0;
-}
-
-.detalhes img{
-    width: 168px;
-    height: 252px;
 }
 
 .detalhes:hover img{
