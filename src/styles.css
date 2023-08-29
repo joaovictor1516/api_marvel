@@ -76,6 +76,11 @@ a{
 
 a:hover{
     cursor: pointer;
+    text-decoration: underline;
+}
+
+.detalhes{
+    width: 250px;
 }
 
 .detalhes p, h2{
@@ -106,7 +111,7 @@ a:hover{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 
@@ -128,7 +133,7 @@ a:hover{
     width: 80%;
 }
 
-.principal h3, p, a{
+.principal h3, p{
     margin: 1px;
 }
 
