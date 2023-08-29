@@ -130,6 +130,7 @@ export interface Comic{
   events: EventList;
   detalhes: boolean;
   temHerois: boolean;
+  temSeries: boolean;
 }
 
 export interface Character{
