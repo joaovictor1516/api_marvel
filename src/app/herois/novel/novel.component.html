@@ -5,13 +5,14 @@
 <main>
     <div *ngFor="let novel of comicDados">
         {{ checaPersonagens(novel) }}
+        {{ checaSeries(novel) }}
         <section  class="principal">
             <img src="{{ novel.thumbnail.path }}/portrait_uncanny.{{ novel.thumbnail.extension }}" alt="{{ novel.title }}" class="imagemPrincipal">
             <div>
                 <h3>{{ novel.title }}</h3>
                 <p>{{ novel.description }}</p>
                 <div *ngFor="let novelUrl of novel.urls">
-                    <a href="{{ novelUrl.url }}" target="_blank">Link da obra no site da marvel</a>
+                    <a href="{{ novelUrl.url }}" target="_blank">{{ novelUrl.type }}</a>
                 </div>
             </div>
         </section>

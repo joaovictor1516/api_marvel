@@ -4,22 +4,31 @@
 
 
 <main>
-  <div *ngFor="let serie of serieDados" >
+  <div *ngFor="let serie of serieDados">
     {{conferePersonagens(serie)}}
     {{confereComics(serie)}}
 
-    <img src="{{ serie.thumbnail.path }}/portrait_xlarge.{{ serie.thumbnail.extension }}" alt="{{ serie.title }}">
-    <h3>{{ serie.title }}</h3>
-    <p>{{ serie.description }}</p>
+    <div class="principal">
+      <img src="{{ serie.thumbnail.path }}/portrait_uncanny.{{ serie.thumbnail.extension }}" alt="{{ serie.title }}" class="imagemPrincipal">
+      <div>
+        <h3>{{ serie.title }}</h3>
+        <p>{{ serie.description }}</p>
+        <div *ngFor="let serieUrl of serie.urls">
+          <a href="{{ serieUrl.url }}" target="_blank">{{ serieUrl.type }}</a>
+      </div>
+      </div>
+    </div>
 
     <section>
       <div *ngIf="serie.temHerois; else serieSemHeroi">
         <h4>personagens:</h4>
         
-        <div *ngFor="let personagem of serieHerois" (click)="maisDetalhesPersonagem(personagem)"
-        class="detalhes">
-          <img src="{{ personagem.thumbnail.path }}/portrait_medium.{{ personagem.thumbnail.extension }}" alt="personagem.name">
-          <h5>{{ personagem.name }}</h5>
+        <div class="conteudos">
+          <div *ngFor="let personagem of serieHerois" (click)="maisDetalhesPersonagem(personagem)"
+          class="detalhes">
+            <img src="{{ personagem.thumbnail.path }}/portrait_fantastic.{{ personagem.thumbnail.extension }}" alt="{{ personagem.name }}">
+            <h5>{{ personagem.name }}</h5>
+          </div>
         </div>
       </div>
     
@@ -32,9 +41,11 @@
       <div *ngIf="serie.temComic; else serieSemComic">
         <h4>comics:</h4>
 
-        <div *ngFor="let comic of serieComics" (click)="maisDetalhesComic(comic)" class="detalhes">
-          <img src="{{ comic.thumbnail.path }}/portrait_medium.{{ comic.thumbnail.extension }}" alt="{{ comic.title }}">
-          <h5>{{ comic.title }}</h5>
+        <div class="conteudos">
+          <div *ngFor="let comic of serieComics" (click)="maisDetalhesComic(comic)" class="detalhes">
+            <img src="{{ comic.thumbnail.path }}/portrait_fantastic.{{ comic.thumbnail.extension }}" alt="{{ comic.title }}">
+            <h5>{{ comic.title }}</h5>
+          </div>
         </div>
       </div> 
 

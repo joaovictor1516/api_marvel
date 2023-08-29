@@ -17,7 +17,6 @@ export class PersonagemComponent implements OnInit{
   personagemVariacoes: Character[] = [];
   personagemSeries: Series[] = [];
   personagemSelecionado: Character = {} as Character;
-  personagemPesquisa: Character[] = [];
   
   constructor(private marvelService: MarvelService, private http: HttpClient, private router: Router, private route: ActivatedRoute){}
 
@@ -51,16 +50,6 @@ export class PersonagemComponent implements OnInit{
         console.error(error);
       }
     })
-
-    this.getHeroByName().pipe(take(1)).subscribe({
-      next: (response: any) => {
-        this.personagemVariacoes = response.data.results;
-        console.log(this.personagemVariacoes);
-      },
-      error: (error: any) => {
-        console.error(error)
-      }
-    })
   }
 
   descricaoHeroi(heroi: Character){
@@ -68,20 +57,6 @@ export class PersonagemComponent implements OnInit{
       heroi.description = "Description is unndefined";
     }
     console.log("Estou funcionando")
-  }
-
-  getHeroByName(){
-    const posicao = this.personagemSelecionado.name.indexOf("(");
-    if(posicao !== -1){
-      this.personagemSelecionado.name = this.personagemSelecionado.name.substring(0, posicao);
-    } else{
-      console.log(this.personagem.name);
-    }
-    const url: string = `${this.marvelService.baseUrl}/characters?nameStartsWith=${this.personagemSelecionado.name}&ts=${this.marvelService.timeStemp}&apikey=${this.marvelService.publicKey}&hash=${this.marvelService.hash}`;
-
-    const headers = new HttpHeaders().set("Content-Type", "application/json");
-
-    return this.http.get(url,{ headers });
   }
 
   mostraDetalhesHeroi(heroi: Character){
