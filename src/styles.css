@@ -25,7 +25,7 @@ main{
     background-color: #eC151e;
 }
 
-div:not(.detalhes,.buscador,.conteudos){
+div:not(.buscador,.conteudos,.principal){
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -53,6 +53,10 @@ footer main{
     height: 100%;
 }
 
+header{
+    padding: 5px;
+}
+
 footer main, header main{
     background-color: #fff;
 }
@@ -65,18 +69,18 @@ section{
     margin: 5px 0;
 }
 
-.detalhes{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: 5px 0;
+a{
+    text-decoration: none;
+    color: #2b2a2a;
+}
+
+a:hover{
+    cursor: pointer;
 }
 
 .detalhes p, h2{
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow : hidden;
     text-overflow: ellipsis;
@@ -85,13 +89,13 @@ section{
 }
 
 .detalhes img{
-    width: 100px;
-    height: 150px;
+    width: 168px;
+    height: 252px;
 }
 
 .detalhes:hover img{
-    width: 150px;
-    height: 225px;
+    width: 216px;
+    height: 324px;
 }
 
 .detalhes:hover{
@@ -104,6 +108,28 @@ section{
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.imagemPrincipal{
+    width: 300px;
+    height: 450px;
+}
+
+.principal{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    word-wrap: break-word;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    width: 80%;
+}
+
+.principal h3, p, a{
+    margin: 1px;
 }
 
 #marvelLogo{
