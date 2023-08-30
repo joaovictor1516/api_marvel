@@ -52,16 +52,20 @@ export class PersonagemComponent implements OnInit{
     })
   }
 
-  descricaoHeroi(heroi: Character){
-    if(heroi.description === ""){
-      heroi.description = "Description is unndefined";
+  temComics(heroi: Character){
+    if(heroi.comics.items.length > 0){
+      heroi.temComic = true;
+    } else{
+      heroi.temComic = false;
     }
-    console.log("Estou funcionando")
   }
 
-  mostraDetalhesHeroi(heroi: Character){
-    this.marvelService.setPersonagemSelecionado(heroi);
-    this.router.navigate(['/personagem',heroi.id]);
+  temSeries(heroi: Character){
+    if(heroi.series.items.length > 0){
+      heroi.temSeries = true;
+    } else{
+      heroi.temSeries = false;
+    }
   }
 
   mostraDetalhesNovel(novel: Comic){
