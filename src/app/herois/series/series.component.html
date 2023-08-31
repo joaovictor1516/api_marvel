@@ -4,7 +4,7 @@
 
 <main>
     <div class="conteudos">
-        <div *ngFor="let series of seriesHerois" (mouseenter)="mostraDetalhes(series)" (mouseleave)="escondeDetalhes(series)" (click)="maisDetalhes(series)"  class="detalhes">
+        <div *ngFor="let series of seriesHerois" (mouseenter)="mostraDetalhes(series)" (mouseleave)="escondeDetalhes(series)" (click)="maisDetalhes(series)" class="detalhes">
             <img src="{{ series.thumbnail.path }}/portrait_fantastic.{{ series.thumbnail.extension }}" alt="{{ series.title }}" >
         
             <div *ngIf="series.detalhes">
