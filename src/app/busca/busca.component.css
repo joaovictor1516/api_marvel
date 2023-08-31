@@ -7,24 +7,26 @@ main{
     flex-direction: row;
 }
 
+button, input{
+    border: solid 1px #3e3d3d
+}
+
 input{
     width: 150px;
     height: 16px;
     border-radius: 10px 0 0 10px;
     padding-left: 5px;
+    border-right: none;
 }
 
 button{
     background-image: url(../../assets/buscaLogo.png);
     background-repeat: no-repeat;
-    background-position: left center;
+    background-position: center center;
     background-color: #EC151E;
     width: 22px;
     height: 17.6px;
     border-radius: 0 10px 10px 0;
     cursor: pointer;
-}
-
-button, input{
-    border: solid 1px #3e3d3d
+    border-left: none;
 }
