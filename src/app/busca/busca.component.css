@@ -22,6 +22,7 @@ button{
     width: 22px;
     height: 17.6px;
     border-radius: 0 10px 10px 0;
+    cursor: pointer;
 }
 
 button, input{
