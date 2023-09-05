@@ -4,10 +4,13 @@
 
 <main>
     <div *ngFor="let heroi of personagemDados">
+        {{ temComics(heroi) }}
+        {{ temSeries(heroi) }}
+
         <div class="principal">
             <img src="{{ heroi.thumbnail.path }}/portrait_uncanny.{{ heroi.thumbnail.extension }}" alt="{{ heroi.name }}" class="imagemPrincipal">
             <div>
-                <h3>{{ heroi.name }}</h3>
+                <h2>{{ heroi.name }}</h2>
                 <p>{{heroi.description}}</p>
                 <div *ngFor="let heroiUrl of heroi.urls">
                     <a href="{{ heroiUrl.url }}" target="_blank">{{ heroiUrl.type }}</a>
@@ -17,33 +20,33 @@
 
         <section>
             <div *ngIf="heroi.temComic; else personagemSemComic">
-                <h4>Comics:</h4>
+                <h3>Comics:</h3>
                 <div class="conteudos">
                     <div *ngFor="let comics of personagemComics" (click)="mostraDetalhesNovel(comics)" class="detalhes">
                         <img src="{{ comics.thumbnail.path }}/portrait_fantastic.{{ comics.thumbnail.extension }}" alt="{{ comics.title }}">
-                        <h5>{{ comics.title }}</h5>
+                        <h4>{{ comics.title }}</h4>
                     </div>
                 </div>
             </div>
 
             <ng-template #personagemSemComic class="detalhes">
-                <h5>{{ heroi.name }} não tem comic</h5>
+                <h4>{{ heroi.name }} não tem comic</h4>
             </ng-template>
         </section>
     
         <section>
             <div *ngIf="heroi.temComic; else personagemSemSerie">
-                <h4>Series:</h4>
+                <h3>Series:</h3>
                 <div class="conteudos">
                     <div *ngFor="let series of personagemSeries" (click)="mostraDetalhesSerie(series)" class="detalhes">
                         <img src="{{ series.thumbnail.path }}/portrait_fantastic.{{ series.thumbnail.extension }}" alt="{{ series.title }}">
-                        <h5>{{ series.title }}</h5>
+                        <h4>{{ series.title }}</h4>
                     </div>
                 </div>
             </div>
 
             <ng-template #personagemSemSerie class="detalhes">
-                <h5>{{ heroi.name }} não tem serie</h5>
+                <h4>{{ heroi.name }} não tem serie</h4>
             </ng-template>
         </section>
     </div>
