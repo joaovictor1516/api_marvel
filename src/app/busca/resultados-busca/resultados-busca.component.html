@@ -4,39 +4,39 @@
 
 <main>
     <section>
-        <h3>Herois:</h3>
+        <h2>Herois:</h2>
         <div class="conteudos">
             <div *ngFor="let herois of pesquisaCharacter" (mouseenter)="mostraDetalhes(herois)" (mouseleave)="escondeDetalhes(herois)" (click)="maisDetalhesPersonagem(herois)" class="detalhes">
                 <img src="{{ herois.thumbnail.path }}/portrait_fantastic.{{ herois.thumbnail.extension }}" alt="{{ herois.name }}">
         
                 <div *ngIf="herois.detalhes">
-                    <h2>{{ herois.name }}</h2>
+                    <h3>{{ herois.name }}</h3>
                 </div>
             </div>
         </div>
     </section>
 
     <section>
-        <h3>Comics:</h3>
+        <h2>Comics:</h2>
             <div class="conteudos">
                 <div *ngFor="let comics of pesquisaComics" (mouseenter)="mostraDetalhes(comics)" (mouseleave)="escondeDetalhes(comics)" (click)="maisDetalhesComics(comics)" class="detalhes">
                     <img src="{{ comics.thumbnail.path }}/portrait_fantastic.{{ comics.thumbnail.extension }}" alt="{{ comics.title }}">
         
                     <div *ngIf="comics.detalhes">
-                        <h2>{{ comics.title }}</h2>
+                        <h3>{{ comics.title }}</h3>
                     </div>
                 </div>
             </div>
     </section>
     
     <section>
-        <h3>Series:</h3>
+        <h2>Series:</h2>
             <div class="conteudos">
                 <div *ngFor="let series of pesquisaSerie" (mouseenter)="mostraDetalhes(series)" (mouseleave)="escondeDetalhes(series)" (click)="maisDetalhesSeries(series)" class="detalhes">
                     <img src="{{ series.thumbnail.path }}/portrait_fantastic.{{ series.thumbnail.extension }}" alt="{{ series.title }}">
         
                     <div *ngIf="series.detalhes">
-                        <h2>{{ series.title }}</h2>
+                        <h3>{{ series.title }}</h3>
                     </div>
                 </div>
             </div>

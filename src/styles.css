@@ -83,7 +83,7 @@ a:hover{
     width: 250px;
 }
 
-.detalhes p, h2{
+.detalhes p, h2, h3{
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
