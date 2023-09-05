@@ -7,6 +7,7 @@ div{
     border: none;
     align-items: inherit;
     height: auto;
+    width: 180px;
 }
 
 ul{
@@ -37,4 +38,8 @@ img{
     align-self: center;
     height: 38px;
     width: 40px;
+}
+
+h3{
+    width: 180px;
 }
