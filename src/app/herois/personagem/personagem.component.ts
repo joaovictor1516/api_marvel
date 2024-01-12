@@ -1,4 +1,4 @@
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs';
@@ -10,6 +10,7 @@ import { Character, Comic, Series } from 'src/app/interfaces/interfaces.componen
   templateUrl: './personagem.component.html',
   styleUrls: ['./personagem.component.css']
 })
+
 export class PersonagemComponent implements OnInit{
   personagem: Character = {} as Character;
   personagemDados: Character[] = [];
